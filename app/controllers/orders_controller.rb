@@ -1,12 +1,10 @@
 class OrdersController < ApplicationController
   def index
     # @bought_orders = Order.where(buyer: current_user)
-    # @sold_orders = Order.select('orders.*')
-    #                     .joins(meal: :user)
-    #                     .where(users: { id: current_user.id })
-    @bought_orders = current_user.bought_orders
-    @sold_orders = current_user.sold_orders
-    raise
+    @purchases = current_user.purchases
+    @sales = Order.select('orders.*')
+                  .joins(meal: :user)
+                  .where(users: { id: current_user.id })
   end
 
   def create

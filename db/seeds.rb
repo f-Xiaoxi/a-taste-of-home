@@ -33,13 +33,10 @@ rich = User.create!(
   last_name: 'Ard'
 )
 
-
-puts "Creating Meals..."
-
-file = URI.open("https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-1024x1536.jpg")
-
+puts "Creating meals..."
 10.times do
-  meal = Meal.new!(
+  file = URI.open("https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-1024x1536.jpg")
+  meal = Meal.new(
     name: Faker::Food.dish,
     description: Faker::Food.description,
     price: rand(0.1..20).round(2),
@@ -50,7 +47,8 @@ file = URI.open("https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING
 end
 
 10.times do
-  meal = Meal.new!(
+  file = URI.open("https://minimalistbaker.com/wp-content/uploads/2022/09/FLUFFY-Maple-Pumpkin-Butter-Vegan-naturally-sweetened-4-ingredients-perfect-for-fall-minimalistbaker-recipe-plantbased-maple-pumpkin-butter-5-1024x1536.jpg")
+  meal = Meal.new(
     name: Faker::Food.dish,
     description: Faker::Food.description,
     price: rand(0.1..20).round(2),
@@ -61,7 +59,8 @@ end
 end
 
 10.times do
-  meal = Meal.new!(
+  file = URI.open("https://minimalistbaker.com/wp-content/uploads/2022/09/Roasted-Cauliflower-Salad-with-Middle-Eastern-inspired-spices-Beautiful-fresh-and-just-30-minutes-minimalistbaker-recipe-plantbased-cauliflower-side-7-1024x1536.jpg")
+  meal = Meal.new(
     name: Faker::Food.dish,
     description: Faker::Food.description,
     price: rand(0.1..20).round(2),
@@ -71,7 +70,7 @@ end
   meal.save
 end
 
-puts "Creating Orders..."
+puts "Creating orders..."
 Order.create!(
   meal: Meal.first,
   buyer: fai,

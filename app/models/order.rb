@@ -3,5 +3,5 @@ class Order < ApplicationRecord
   belongs_to :meal
 
   validates :status, inclusion: { in: %w[pending accepted rejected completed] }, presence: true
-  scope :sales_for, ->(user) { joins(:meal).where( user_id: user.id ) }
+  # scope :sales_for, ->(user) { joins(:meal).where( user_id: user.id ) }
 end

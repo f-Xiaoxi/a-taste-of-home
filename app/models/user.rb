@@ -9,7 +9,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def sales
-    Order.joins(:meal).where(user_id: self.id)
-  end
+  # def sales
+  #   Order.joins(:meal).where(user_id: self.id)
+  # end
 end
