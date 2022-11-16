@@ -46,31 +46,27 @@
 </div>
 
 <%# cards %>
-<section class="card-container wrap ">
-      <% @meals.each do |meal|%>
-  <div class="card border-0 ">
-    <div class="image"><%= link_to meal_path(meal) do %> <%= image_tag("https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-600x900.jpg", :class => "card-img-top")%>
-    <% end %>
-        <div class="card-img-overlay">
-        <h6 class="bottom-right">$<%= meal.price %></h6>
+<section class="card-container wrap">
+<% @meals.each do |meal|%>
+  <%= link_to meal_path(meal), class: "text-decoration-none" do %>
+    <div class="card border-0">
+      <div class="image">
+        <div class="card-category" style="height: 400px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key, height: 400, width: 400, crop: :fill %>')">
         </div>
-</div>
-        <div class="card-body">
-      <h5 class="card-title">
-        <%= meal.name %>
-      </h5>
-      <div id="textbox">
+        <div class="card-img-overlay">
+          <h6 class="bottom-right">$<%= meal.price %></h6>
+        </div>
+      </div>
 
+      <div class="card-body">
+        <h5 class="card-title">
+        <%= meal.name %>
+        </h5>
       </div>
     </div>
-  </div>
-      <% end %>
-  </div>
-
-
-
-</div>
-
+  <% end %>
+<% end %>
+</section>
 
 <script>
 /* When the user clicks on the button,
@@ -90,4 +86,3 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-

@@ -5,8 +5,21 @@
   <p><%= order.status.capitalize %></p>
 <% end %>
 
-<h2>Sold orders</h2>
-<% @sold_orders.each do |order| %>
-  <p><%= order.meal.name %></p>
-  <p><%= order.status.capitalize %></p>
-<% end %>
+
+<div class="row">
+  Buyer<br />
+  <ul>
+    <li><%= @meal.name %></li>
+    <li><%= @meal.price %></li>
+  </ul>
+</div>
+<%# divider for both partitions %>
+<hr>
+<%# add the different parts for buyer and seller %>
+<div class="row">
+    Seller<br />
+    <ul>
+      <li><%= @meal.name %></li>
+      <li><%= @meal.price %></li>
+  </ul>
+  </div>

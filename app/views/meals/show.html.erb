@@ -1,11 +1,66 @@
-<h1><p><%= @meal.name %></p></h1>
 
-<p><%= @meal.description %></p>
-<p><%= @meal.price %></p>
-<p><%= @meal.seller.first_name %></p>
 
-<%= simple_form_for [@meal, @order] do |f| %>
-  <%= f.submit 'Create Order' %>
-<% end %>
+<div class="top-nav">
+  <div class="box index-container">
+    <div class="social">
+      <p>SHARE A MEAL, SHARE A CULTURE. get a taste of homecooked blachblahblah</p>
+    </div>
+    <div>
+      <ul class="social">
+      <li><i class="fa-brands fa-facebook-f"></i></li>
+      <li><i class="fa-brands fa-instagram"></i></li>
+      <li><i class="fa-brands fa-facebook-f"></i></li>
+      <li><i class="fa-brands fa-facebook-f"></i></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<%# if completed %>
+<%# main contain after pink bar %>
+
+<div class="index-container">
+<%# Navigation bar %>
+<div class="topnav">
+  <div><button class="fa-regular fa-circle-user fa-2x collapsible" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="collapseExample">
+  </button></div>
+   <div class="title"><img src="https://res.cloudinary.com/ddaoe4tdm/image/upload/v1668531915/tastehome2_msqitj.png" width="180px"></div>
+<div class="cart"><i class="fa-solid fa-bag-shopping fa-2x"></i></div>
+
+</div>
+
+</div>
+
+<%= render "devise/shared/navbar" %>
+
+<div class="main-title">
+  <h2 class="text-center"><%= @meal.name %></h2>
+</div>
+
+<%# cards %>
+<section class="card-container-show wrap ">
+  <div class="card border-0 ">
+    <div class="image">
+      <div class="card-category" style="height: 400px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path @meal.photo.key, height: 400, width: 400, crop: :fill %>')">
+    </div>
+
+    <div class="card-body-show">
+      <h5 class="card-title">
+      <div class = "product-price">
+        <p>Price: <span><%= @meal.price %></span></p>
+      </div>
+
+      <div class = "product-detail">
+        <h2>about this item: </h2>
+          <p><%= @meal.description %></p>
+      </div>
+
+      <div class = "purchase-info">
+        <button type = "button" class = "btn">
+         <%= simple_form_for [@meal, @order] do |f| %>
+            <%= f.submit 'Add', class: "btn"%></i>
+          <% end %>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

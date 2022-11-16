@@ -1,0 +1,42 @@
+html {
+  height: 100%;
+  width: 100%;
+  padding-left: 50px;
+}
+
+body {
+  display: table;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family:'Times New Roman', Times, serif;
+}
+
+.row {
+  display: table-row;
+  height: 50%;
+}
+
+.row:nth-child(1) {
+  background-color: white;
+}
+
+.row:nth-child(2) {
+  background-color: white;
+}
+
+ul {
+  list-style: square;
+  list-style: inside;
+}
+
+p {
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+}

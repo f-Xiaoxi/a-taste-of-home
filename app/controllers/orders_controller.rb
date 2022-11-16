@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     #                     .joins(meal: :user)
     #                     .where(users: { id: current_user.id })
     @bought_orders = current_user.bought_orders
-    @sold_orders = current_user.sold_orders
+    # @sold_orders = current_user.sold_orders
   end
 
   def create
