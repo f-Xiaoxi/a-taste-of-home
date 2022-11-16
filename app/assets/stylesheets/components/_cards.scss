@@ -1,0 +1,84 @@
+/* Create a responsive, centered, three-column grid. */
+
+.card-container {
+  align-items: start;
+  display: grid;
+  grid-gap: 35px;
+  justify-content: center;
+  width:95%;
+}
+
+@media only screen and (min-width: 481px) {
+ .card-container {
+  grid-template-columns: 1fr 1fr;
+ }
+}
+
+@media only screen and (min-width: 640px) {
+  .card-container {
+   grid-template-columns: 1fr 1fr 1fr;
+  }
+ }
+
+
+@media only screen and (min-width: 981px) {
+.card-container {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+}
+
+header, footer {
+  text-align: center;
+}
+
+.card {
+  background-color: transparent;
+  color: black;
+  padding: 24px 0 0px;
+  text-align: center;
+}
+
+// price
+
+.alignleft {
+  float: left;
+  padding: 20px;
+}
+
+.bottom-right {
+  position: absolute;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  align-content: center;
+  justify-content: center;
+  border: 1px solid black;
+
+  h6{
+    font-size: 11px;
+    font-family: 'jost', sans-serif;
+    font-weight: bold;
+  }
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+
+}
+
+.card-title {
+  text-align: center;
+  font-family: 'jost', sans-serif;
+  color: #212121;
+  padding: 5px;
+  margin: 0px;
+}
+
+.card-body{
+  padding: 0px;
+}
+
+.image {
+  position: relative;
+}

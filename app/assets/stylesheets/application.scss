@@ -9,4 +9,22 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/cards";
 @import "pages/index";
+
+// font
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Josefin+Sans:wght@600&family=Jost:wght@600&family=Roboto+Flex:wght@300&family=Source+Code+Pro&display=swap');
+
+body {
+  background-color: white;
+  font-family: 'jost', sans-serif;
+  max-width:100%;
+  color: #212121;
+}
+
+.title {
+  font-size:40px;
+  text-align:center;
+  font-family: 'jost', sans-serif;
+  color: #212121;
+}
