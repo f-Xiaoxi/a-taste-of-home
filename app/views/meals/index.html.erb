@@ -1,2 +1,7 @@
-<h1>Meals#index</h1>
-<p>Find me in app/views/meals/index.html.erb</p>
+<h1>Available meals</h1>
+<% @meals.each do |meal| %>
+  <p><%= link_to meal.name, meal_path(meal) %></p>
+  <p><%= meal.price %></p>
+  <p><%= meal.description %></p>
+  <p><%= meal.seller_id %></p>
+<% end %>
