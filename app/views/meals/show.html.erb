@@ -1,2 +1,12 @@
-<h1>Meals#show</h1>
-<p>Find me in app/views/meals/show.html.erb</p>
+<h1><%= @meal.name %></h1>
+
+<p><%= @meal.description %></p>
+<p><%= @meal.price %></p>
+
+<%= simple_form_for [@meal, @order] do |f| %>
+  <%= f.submit 'Create Order' %>
+<% end %>
+
+<%# if completed %>
+  <%# <p>Order completed</p> %>
+<%# end %>
