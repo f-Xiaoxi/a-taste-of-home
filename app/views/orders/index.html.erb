@@ -1,12 +1,15 @@
 <h1>Your Orders</h1>
-
-<% @bought_orders.each do |order| %>
+<br>
+<h2>Purchases</h2>
+<% @purchases.each do |order| %>
   <p><%= order.meal.name %></p>
   <p><%= order.status.capitalize %></p>
 <% end %>
-
-<h2>Sold orders</h2>
-<% @sold_orders.each do |order| %>
+<hr>
+<h2>Sales</h2>
+<% @sales.each do |order| %>
   <p><%= order.meal.name %></p>
+  <p><%= order.created_at.strftime('%d/%m/%Y') %></p>
+  <p><%= order.buyer.first_name %></p>
   <p><%= order.status.capitalize %></p>
 <% end %>
