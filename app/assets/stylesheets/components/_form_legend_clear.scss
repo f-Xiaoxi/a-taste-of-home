@@ -12,6 +12,7 @@ legend ~ div.form-check:first-of-type {
 
 .text-input-label {
   width: 30%;
+  font-size:13px;
   margin: auto;
   transform: translate(20px,23px) scale(1);
   transform-origin: top left;
@@ -29,4 +30,18 @@ legend ~ div.form-check:first-of-type {
 
 .input_html {
   height:40px;
+}
+
+#submit-button {
+  align-items: center;
+  background-color: #FFDED6;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  height: 54px;
+  justify-content: center;
+  outline: none;
+  text-align: center;
+  transition: all .15s ease-out;
+  width: 100%;
 }

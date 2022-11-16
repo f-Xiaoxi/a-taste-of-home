@@ -31,11 +31,11 @@
 <div id="demo" class="collapse dropdown-content">
 <ul class="nav-content">
 <li class="nav-menu"><a href="<%= new_user_session_path %>">------ Sign in</a></li>
-<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Create an account</a></li>
-<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Offer a meal</a></li>
-<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Get a meal</a></li>
-<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ View orders</a></li>
-<li class="nav-menu"><%= link_to "------ Logout", destroy_user_session_path, data:{turbo_method: :delete}, class: "dropdown-item" %></li>
+<li class="nav-menu"><a href="<%= new_user_session_path %>">------ Create an account</a></li>
+<li class="nav-menu"><a href="<%= new_user_session_path %>">------ Offer a meal</a></li>
+<li class="nav-menu"><a href="<%= new_user_session_path %>">------ Get a meal</a></li>
+<li class="nav-menu"><a href="<%= new_user_session_path %>">------ View orders</a></li>
+<li class="nav-menu"><%= link_to "------ Logout", destroy_user_session_path, data:{turbo_method: :delete} %></li>
 </ul></div>
 
 
@@ -48,9 +48,11 @@
 <section class="card-container wrap ">
       <% @meals.each do |meal|%>
   <div class="card border-0 ">
-    <div class="image"><%= link_to meal_path(meal) do %> <%= image_tag("https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-600x900.jpg", :class => "card-img-top")%>
-    <% end %>
-        <div class="card-img-overlay">
+    <div class="image">
+      <%= link_to meal_path(meal) do %>
+        <%= image_tag "https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-600x900.jpg", class: "card-img-top" %>
+      <% end %>
+      <div class="card-img-overlay">
         <h6 class="bottom-right">$<%= meal.price %></h6>
         </div>
 </div>
