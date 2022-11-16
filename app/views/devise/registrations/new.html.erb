@@ -1,33 +1,51 @@
-<h2>Sign up</h2>
+<%= render "devise/shared/navbar" %>
+
+<%# form here %>
+
+<div class="main-title">
+  <h2 class="text-center">Make an account</h2>
+  <h6 class="login-text">Order or sell, and view your order history by making an account.</h6>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
+  <div class="form-inputs text-input-label">
     <%= f.input :first_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "first-name" } %>
+                label: false,
+                placeholder: "FIRST NAME*",
+                input_html: { autocomplete: "first-name", class: "border-0 rounded-0 label-style"} %>
     <%= f.input :last_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "last-name" } %>
+                label: false,
+                placeholder: "LAST NAME*",
+                input_html: { autocomplete: "last-name", class: "border-0 rounded-0 label-style" } %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                label: false,
+                placeholder: "EMAIL*",
+                input_html: { autocomplete: "email", class: "border-0 rounded-0 label-style" }%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                label: false,
+                placeholder: "PASSWORD*",
+                input_html: { autocomplete: "new-password", class: "border-0 rounded-0 label-style" } %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                label: false,
+                placeholder: "PASSWORD*",
+                input_html: { autocomplete: "new-password", class: "border-0 rounded-0 label-style" } %>
+  <div class="form-actions">
+    <%= f.button :submit, "Create account", class: "login-btn" %>
+  </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="text-input-label devise-links">
+  <%= render "devise/shared/links" %>
+</div>
