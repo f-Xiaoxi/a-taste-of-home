@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
 
 puts "Clearing old data..."
 Order.destroy_all
@@ -34,54 +35,62 @@ rich = User.create!(
 
 
 puts "Creating Meals..."
+
+file = URI.open("https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-1024x1536.jpg")
+
 10.times do
-  Meal.create!(
+  meal = Meal.new!(
     name: Faker::Food.dish,
     description: Faker::Food.description,
     price: rand(0.1..20).round(2),
     user: zh
   )
+  meal.photo.attach(io: file, filename: "mealpic.png", content_type: "image/png")
+  meal.save
 end
 
 10.times do
-  Meal.create!(
+  meal = Meal.new!(
     name: Faker::Food.dish,
     description: Faker::Food.description,
     price: rand(0.1..20).round(2),
     user: fai
   )
+  meal.photo.attach(io: file, filename: "mealpic.png", content_type: "image/png")
+  meal.save
 end
 
 10.times do
-  Meal.create!(
+  meal = Meal.new!(
     name: Faker::Food.dish,
     description: Faker::Food.description,
     price: rand(0.1..20).round(2),
     user: rich
   )
+  meal.photo.attach(io: file, filename: "mealpic.png", content_type: "image/png")
+  meal.save
 end
-
 
 puts "Creating Orders..."
 Order.create!(
   meal: Meal.first,
   buyer: fai,
   status: 'pending',
-  comment: 'please work'
+  comment: 'Less spicy please'
 )
 
 Order.create!(
   meal: Meal.last,
   buyer: fai,
   status: 'pending',
-  comment: 'please work'
+  comment: 'Nil'
 )
 
 Order.create!(
   meal: Meal.last,
   buyer: zh,
   status: 'pending',
-  comment: 'please work'
+  comment: 'More onions'
 )
 
 puts "Done!"

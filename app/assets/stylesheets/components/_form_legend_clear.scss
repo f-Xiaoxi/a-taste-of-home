@@ -13,9 +13,6 @@ legend ~ div.form-check:first-of-type {
 .text-input-label {
   width: 30%;
   margin: auto;
-  transform: translate(20px,23px) scale(1);
-  transform-origin: top left;
-  transition: transform .1s cubic-bezier(0,0,.2,1) 0ms;
 }
 
 .input-color {
@@ -29,4 +26,7 @@ legend ~ div.form-check:first-of-type {
 
 .input_html {
   height:40px;
+  transform: translate(20px,23px) scale(1);
+  transform-origin: top left;
+  transition: transform .1s cubic-bezier(0,0,.2,1) 0ms;
 }
