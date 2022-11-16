@@ -15,7 +15,7 @@ user = User.last
     name: Faker::Food.dish,
     description: Faker::Food.description,
     price: rand(0.1..20).round(2),
-    user: user
+    seller: user
   )
 end
 

@@ -1,5 +1,5 @@
 class Meal < ApplicationRecord
-  belongs_to :user
+  belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
   has_many :orders
 
   validates :name, presence: true
