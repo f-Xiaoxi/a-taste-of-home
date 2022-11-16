@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_16_023247) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_15_091454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,21 +18,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_023247) do
     t.string "name", null: false
     t.float "price", null: false
     t.text "description"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "seller_id"
-    t.index ["seller_id"], name: "index_meals_on_seller_id"
+    t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "buyer_id"
+    t.bigint "user_id"
     t.bigint "meal_id"
     t.string "status", null: false
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
     t.index ["meal_id"], name: "index_orders_on_meal_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_023247) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "meals", "users", column: "seller_id"
+  add_foreign_key "meals", "users"
   add_foreign_key "orders", "meals"
-  add_foreign_key "orders", "users", column: "buyer_id"
+  add_foreign_key "orders", "users"
 end

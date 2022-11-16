@@ -6,17 +6,82 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts "Clearing old data..."
+Order.destroy_all
 Meal.destroy_all
+User.destroy_all
 
-user = User.last
+puts "Creating users..."
+fai = User.create!(
+  email: 'email@email.com',
+  password: '123123',
+  first_name: 'Fai',
+  last_name: 'Rude'
+)
+
+zh = User.create!(
+  email: 'email1@email.com',
+  password: '123123',
+  first_name: 'Zong',
+  last_name: 'Ha'
+)
+rich = User.create!(
+  email: 'rich@email.com',
+  password: '123123',
+  first_name: 'Rich',
+  last_name: 'Ard'
+)
+
+
+puts "Creating Meals..."
+10.times do
+  Meal.create!(
+    name: Faker::Food.dish,
+    description: Faker::Food.description,
+    price: rand(0.1..20).round(2),
+    user: zh
+  )
+end
 
 10.times do
   Meal.create!(
     name: Faker::Food.dish,
     description: Faker::Food.description,
     price: rand(0.1..20).round(2),
-    seller: user
+    user: fai
   )
 end
 
-puts "10 meals created"
+10.times do
+  Meal.create!(
+    name: Faker::Food.dish,
+    description: Faker::Food.description,
+    price: rand(0.1..20).round(2),
+    user: rich
+  )
+end
+
+
+puts "Creating Orders..."
+Order.create!(
+  meal: Meal.first,
+  buyer: fai,
+  status: 'pending',
+  comment: 'please work'
+)
+
+Order.create!(
+  meal: Meal.last,
+  buyer: fai,
+  status: 'pending',
+  comment: 'please work'
+)
+
+Order.create!(
+  meal: Meal.last,
+  buyer: zh,
+  status: 'pending',
+  comment: 'please work'
+)
+
+puts "Done!"

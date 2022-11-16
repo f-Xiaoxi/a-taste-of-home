@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
     #                     .where(users: { id: current_user.id })
     @bought_orders = current_user.bought_orders
     @sold_orders = current_user.sold_orders
+    raise
   end
 
   def create
