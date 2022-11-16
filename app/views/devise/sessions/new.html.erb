@@ -59,14 +59,16 @@
                 required: false,
                 label: false,
                 placeholder: "PASSWORD",
-                input_html: { autocomplete: "current-password" } %>
+                input_html: { autocomplete: "current-password", class: "bg-dark p-2 text-dark bg-opacity-10 border-0 rounded-0" } %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+  <div class="form-actions text-input-label">
+    <%= f.button :submit, "Log in", class: "btn" %>
   </div>
 <% end %>
 
+  <div class="text-input-label">
 <%= render "devise/shared/links" %>
+</div>
