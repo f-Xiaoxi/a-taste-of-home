@@ -10,3 +10,56 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.card1 {
+  position: relative;
+}
+
+.dropdown-content {
+  background: #FFDED6;
+  padding: 30px;
+  border-bottom: 1px solid black;
+
+}
+
+.collapsible {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  line-height: 0;
+  text-align: center;
+}
+
+.nav-content {
+  padding: 0px;
+}
+.nav-menu {
+  border: none;
+  color: #2A2B2A;
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  padding: 5px 5px;
+  position: relative;
+  text-decoration: none;
+
+
+  a{
+    text-decoration: none;
+    color: black;
+    font-family: 'jost', sans-serif;
+  }
+}
+
+.active, .collapsible:hover {
+}
+
+.cart {
+  text-align: right;
+  align-content: right;
+}

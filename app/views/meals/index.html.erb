@@ -1,7 +1,93 @@
-<h1>Available meals</h1>
-<% @meals.each do |meal| %>
-  <p><%= link_to meal.name, meal_path(meal) %></p>
-  <p><%= meal.price %></p>
-  <p><%= meal.description %></p>
-  <p><%= meal.seller_id %></p>
-<% end %>
+
+<div class="top-nav">
+  <div class="box index-container">
+    <div class="social">
+      <p>SHARE A MEAL, SHARE A CULTURE. get a taste of homecooked blachblahblah</p>
+    </div>
+    <div>
+      <ul class="social">
+      <li><i class="fa-brands fa-facebook-f"></i></li>
+      <li><i class="fa-brands fa-instagram"></i></li>
+      <li><i class="fa-brands fa-facebook-f"></i></li>
+      <li><i class="fa-brands fa-facebook-f"></i></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# main contain after pink bar %>
+
+<div class="index-container">
+<%# Navigation bar %>
+<div class="topnav">
+  <div><button class="fa-regular fa-circle-user fa-2x collapsible" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="collapseExample">
+  </button></div>
+   <div class="title"><img src="https://res.cloudinary.com/ddaoe4tdm/image/upload/v1668531915/tastehome2_msqitj.png" width="180px"></div>
+<div class="cart"><i class="fa-solid fa-bag-shopping fa-2x"></i></div>
+
+</div>
+
+</div>
+
+<div id="demo" class="collapse dropdown-content">
+<ul class="nav-content">
+<li class="nav-menu"><a href="<%= new_user_session_path %>">------ Sign in</a></li>
+<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Create an account</a></li>
+<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Offer a meal</a></li>
+<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Get a meal</a></li>
+<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ View orders</a></li>
+<li class="nav-menu"><%= link_to "------ Logout", destroy_user_session_path, data:{turbo_method: :delete}, class: "dropdown-item" %></li>
+</ul></div>
+
+
+
+<div class="main-title">
+  <h2 class="text-center">All Meals</h2>
+</div>
+
+<%# cards %>
+<section class="card-container wrap ">
+      <% @meals.each do |meal|%>
+  <div class="card border-0 ">
+    <div class="image"><%= link_to meal_path(meal) do %> <%= image_tag("https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-600x900.jpg", :class => "card-img-top")%>
+    <% end %>
+        <div class="card-img-overlay">
+        <h6 class="bottom-right">$<%= meal.price %></h6>
+        </div>
+</div>
+        <div class="card-body">
+      <h5 class="card-title">
+        <%= meal.name %>
+      </h5>
+      <div id="textbox">
+
+      </div>
+    </div>
+  </div>
+      <% end %>
+  </div>
+
+
+
+</div>
+
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
