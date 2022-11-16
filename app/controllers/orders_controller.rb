@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
   def index
     # @bought_orders = Order.where(buyer: current_user)
-    @purchases = current_user.purchases
+    @purchases = current_user.purchases.order('id DESC')
     @sales = Order.select('orders.*')
                   .joins(meal: :user)
                   .where(users: { id: current_user.id })
+                  .order('id DESC')
   end
 
   def create
@@ -17,5 +18,14 @@ class OrdersController < ApplicationController
   end
 
   def update
+    order = Order.find(params[:id])
+    order.update!(order_params)
+    redirect_to orders_path
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:status, :comment)
   end
 end

@@ -1,15 +1,52 @@
 <h1>Your Orders</h1>
 <br>
+
 <h2>Purchases</h2>
-<% @purchases.each do |order| %>
-  <p><%= order.meal.name %></p>
-  <p><%= order.status.capitalize %></p>
-<% end %>
+<table>
+  <tr>
+    <th>Order Id</th>
+    <th>Name of Meal</th>
+    <th>Date Ordered</th>
+    <th>Order Status</th>
+  </tr>
+  <% @purchases.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.meal.name %></td>
+      <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+      <td><%= order.status.capitalize %></td>
+    </tr>
+  <% end %>
+</table>
+
 <hr>
+
 <h2>Sales</h2>
-<% @sales.each do |order| %>
-  <p><%= order.meal.name %></p>
-  <p><%= order.created_at.strftime('%d/%m/%Y') %></p>
-  <p><%= order.buyer.first_name %></p>
-  <p><%= order.status.capitalize %></p>
-<% end %>
+<table>
+  <tr>
+    <th>Order Id</th>
+    <th>Name of Meal</th>
+    <th>Date Ordered</th>
+    <th>Name of Buyer</th>
+    <th>Order Status</th>
+    <th>Change Status</th>
+  </tr>
+  <% @sales.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.meal.name %></td>
+      <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+      <td><%= "#{order.buyer.first_name} #{order.buyer.last_name}" %></td>
+      <td><%= order.status.capitalize %></td>
+      <td>
+        <%= simple_form_for order, html: { class: "row row-cols-5 g-2 align-items-center" } do |f| %>
+          <%= f.label :status, class: "col" %>
+          <%= f.input_field :status, collection: %w[pending accepted rejected completed], class: "col" %>
+          <%= f.label :comment, class: "col" %>
+          <%= f.input_field :comment, class: "col" %>
+          <%= f.button :submit, class: "col" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
