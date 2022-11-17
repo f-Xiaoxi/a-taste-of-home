@@ -1,8 +1,12 @@
 class MealsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @meals = Meal.all
+  end
+
+  def mine
+    @meals = Meal.where(user: current_user)
   end
 
   def show
