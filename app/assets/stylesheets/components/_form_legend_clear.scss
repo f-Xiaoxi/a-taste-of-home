@@ -11,9 +11,26 @@ legend ~ div.form-check:first-of-type {
 
 
 .text-input-label {
-  width: 35%;
   margin: auto;
 }
+
+@media only screen and (min-width: 481px) {
+  .text-input-label {
+    width: 80%;
+  }
+ }
+
+ @media only screen and (min-width: 640px) {
+  .text-input-label {
+    width: 50%;
+  }
+ }
+
+ @media only screen and (min-width: 981px) {
+  .text-input-label {
+    width: 35%;
+  }
+  }
 
 .input-color {
   background-color: black;
@@ -113,4 +130,32 @@ legend ~ div.form-check:first-of-type {
   transform: translate(20px,23px) scale(1);
   transform-origin: top left;
   transition: transform .1s cubic-bezier(0,0,.2,1) 0ms;
+}
+
+// add meal form
+
+.meal-label-style{
+  background-color: white !important;
+  border: 1px solid black !important;
+  color: black !important;
+  height:60px;
+  border-radius: 2px;
+  padding-left:20px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.meal-label-style:focus{
+  background-color: #FFDED6 !important;
+  border: 0px solid black  !important;
+  height:60px;
+  padding-left:20px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.meal-label-style:hover{
+  background-color: #FFDED6 !important;
+  border: 0px solid black  !important;
+  height:60px;
+  padding-left:20px;
+  font-family: 'Source Code Pro', monospace;
 }
