@@ -1,15 +1,72 @@
-<h1>Your Orders</h1>
-<br>
-<h2>Purchases</h2>
-<% @purchases.each do |order| %>
-  <p><%= order.meal.name %></p>
-  <p><%= order.status.capitalize %></p>
-<% end %>
-<hr>
-<h2>Sales</h2>
-<% @sales.each do |order| %>
-  <p><%= order.meal.name %></p>
-  <p><%= order.created_at.strftime('%d/%m/%Y') %></p>
-  <p><%= order.buyer.first_name %></p>
-  <p><%= order.status.capitalize %></p>
-<% end %>
+<div class="container">
+  <h2 class="page-title">Your Orders</h2 class="page-title">
+
+  <h3 class="mb-3">Purchases</h3>
+  <% if @purchases.empty? %>
+    <p>You have no purchases.</p>
+  <% else %>
+    <table class="table table-bordered border-2 border-white align-middle">
+      <tr>
+        <th scope="col">Order Id</th>
+        <th scope="col">Name of Meal</th>
+        <th scope="col">Date Ordered</th>
+        <th scope="col">Order Status</th>
+        <th scope="col">Seller's Comments</th>
+      </tr>
+      <% @purchases.each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.meal.name %></td>
+          <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+          <td><%= order.status.capitalize %></td>
+          <td><%= order.comment %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+  <br>
+  <hr>
+
+  <h3 class="mb-3">Sales</h3>
+  <% if @sales.empty? %>
+    <p>You have no sales.</p>
+  <% else %>
+    <table class="table table-bordered border-2 border-white align-middle">
+      <tr>
+        <th>Order Id</th>
+        <th>Name of Meal</th>
+        <th>Date Ordered</th>
+        <th>Name of Buyer</th>
+        <th>Order Status</th>
+        <th>Seller's Comments</th>
+        <th>Change Status</th>
+      </tr>
+      <% @sales.each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.meal.name %></td>
+          <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+          <td><%= "#{order.buyer.first_name} #{order.buyer.last_name}" %></td>
+          <td><%= order.status.capitalize %></td>
+          <td><%= order.comment %></td>
+          <td>
+            <% if ['completed', 'rejected'].exclude? order.status %>
+              <%= simple_form_for order, html: { class: "row row-cols-5 g-2 align-items-center" } do |f| %>
+                <%= f.label :status, class: "col-auto" %>
+                <% if order.status == 'pending' %>
+                  <%= f.input_field :status, collection: %w[pending accepted rejected], class: "col-auto me-2" %>
+                <% elsif  order.status == 'accepted' %>
+                  <%= f.input_field :status, collection: %w[accepted completed], class: "col-auto me-2" %>
+                <% end %>
+                <%= f.label :comment, class: "col-auto" %>
+                <%= f.input_field :comment, class: "col-auto me-2" %>
+                <%= f.button :submit, class: "col-auto btn btn-light border border-dark border-1" %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+  <br>
+</div>
