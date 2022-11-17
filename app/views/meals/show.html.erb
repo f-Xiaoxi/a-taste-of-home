@@ -21,11 +21,9 @@
       </div>
 
       <div class = "purchase-info">
-        <button type = "button" class = "btn btn-submit">
          <%= simple_form_for [@meal, @order] do |f| %>
-            <%= f.submit 'Order this meal', class: "btn"%></i>
+            <%= f.submit 'Order this meal', class: "btn btn-submit" %></i>
           <% end %>
-        </button>
       </div>
     </div>
   </div>
