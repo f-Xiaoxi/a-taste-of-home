@@ -11,7 +11,7 @@ legend ~ div.form-check:first-of-type {
 
 
 .text-input-label {
-  width: 30%;
+  width: 35%;
   margin: auto;
 }
 
@@ -26,6 +26,90 @@ legend ~ div.form-check:first-of-type {
 
 .input_html {
   height:40px;
+  transform: translate(20px,23px) scale(1);
+  transform-origin: top left;
+  transition: transform .1s cubic-bezier(0,0,.2,1) 0ms;
+}
+
+.login-text {
+  width: 35%;
+  margin: auto;
+  text-align: center;
+  font-size: 13px;
+  font-family: 'Source Code Pro', monospace;
+  letter-spacing: .3px;
+  line-height: 1.5em;
+  font-weight: light;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.label-style{
+  background-color: #f7f3ec !important;
+  height:60px;
+  padding-left:20px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.label-style::placeholder{
+  font-size: 11px;
+
+}
+
+.label-style:focus{
+  background-color: #f7f3ec !important;
+  height:60px;
+
+}
+
+.login-btn {
+  margin-top:10px;
+  background-color: #e77260;
+  width: 100%;
+  height:60px;
+  border-radius: 5px;
+  color:white;
+  transition: all .15s ease-out;
+}
+
+.login-btn:hover {
+  background-color: white;
+  box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  transition: all .15s ease-out;
+  color:black;
+}
+
+.devise-links{
+  padding-top: 40px;
+  color: black;
+  text-align: center;
+  font-family: 'jost', sans-serif;
+  font-size: 1em;
+}
+
+.devise-links a{
+  padding-top: 40px;
+  color: black;
+  text-align: center;
+  font-family: 'jost', sans-serif;
+  font-size: 1em;
+}
+
+.form-text {
+  font-size: 12px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.text-input {
+  color: #81807f;
+  /* display: block; */
+  font-family: Plaid-L-Web;
+  font-size: 10px;
+  left: 0;
+  line-height: normal;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
   transform: translate(20px,23px) scale(1);
   transform-origin: top left;
   transition: transform .1s cubic-bezier(0,0,.2,1) 0ms;

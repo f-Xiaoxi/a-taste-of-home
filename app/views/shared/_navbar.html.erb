@@ -1,0 +1,72 @@
+<div class="top-nav">
+  <div class="box index-container">
+    <div class="social">
+      <p>SHARE A MEAL, SHARE A CULTURE. get a taste of homecooked blachblahblah</p>
+    </div>
+    <div>
+      <ul class="social">
+      <li><i class="fa-brands fa-facebook-f"></i></li>
+      <li><i class="fa-brands fa-instagram"></i></li>
+      <li><i class="fa-brands fa-twitter"></i></li>
+      <li><i class="fa-brands fa-telegram"></i></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# main contain after pink bar %>
+
+<%# Navigation bar %>
+<div class="index-container">
+  <div class="topnav">
+    <div><button class="fa-regular fa-circle-user fa-2x collapsible" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="collapseExample">
+    </button></div>
+    <div class="title">
+      <img src="https://res.cloudinary.com/ddaoe4tdm/image/upload/v1668531915/tastehome2_msqitj.png" width="160px">
+    </div>
+    <div class="cart">
+      <i class="fa-solid fa-bag-shopping fa-2x"></i>
+    </div>
+  </div>
+</div>
+
+<%# Dropdown menu %>
+<div id="demo" class="collapse dropdown-content">
+  <ul class="nav-content">
+    <div class="d-flex justify-content-start mb-1">
+      <li class="nav-menu text-center">
+        <%= link_to new_user_session_path do %>
+        SIGN IN <i class="fa-solid fa-chevron-right"></i>
+        <% end %>
+      </li>
+    </div>
+    <div class="d-flex justify-content-start mb-1">
+      <li class="nav-menu">
+        <%= link_to new_user_registration_path do %>
+          CREATE ACCOUNT <i class="fa-solid fa-chevron-right"></i>
+        <% end %>
+      </li>
+    </div>
+    <div class="d-flex justify-content-start mb-1">
+      <li class="nav-menu">
+        <%= link_to new_meal_path do %>
+          OFFER MEAL <i class="fa-solid fa-chevron-right"></i>
+        <% end %>
+      </li>
+    </div>
+    <div class="d-flex justify-content-start mb-1">
+      <li class="nav-menu">
+        <%= link_to orders_path do %>
+          VIEW ORDER <i class="fa-solid fa-chevron-right"></i>
+        <% end %>
+      </li>
+    </div>
+    <div class="d-flex justify-content-start mb-1">
+        <li class="nav-menu">
+          <%= link_to destroy_user_session_path, data:{turbo_method: :delete} do %>
+          LOG OUT <i class="fa-solid fa-chevron-right"></i>
+        <% end %>
+        </li>
+    </div>
+  </ul>
+</div>

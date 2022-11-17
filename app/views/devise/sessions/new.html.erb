@@ -1,74 +1,31 @@
-<div class="top-nav">
-  <div class="box index-container">
-    <div class="social">
-      <p>SHARE A MEAL, SHARE A CULTURE. get a taste of homecooked blachblahblah</p>
-    </div>
-    <div>
-      <ul class="social">
-      <li><i class="fa-brands fa-facebook-f"></i></li>
-      <li><i class="fa-brands fa-instagram"></i></li>
-      <li><i class="fa-brands fa-facebook-f"></i></li>
-      <li><i class="fa-brands fa-facebook-f"></i></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<%# main contain after pink bar %>
-
-<div class="index-container">
-<%# Navigation bar %>
-<div class="topnav">
-  <div><button class="fa-regular fa-circle-user fa-2x collapsible" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="collapseExample">
-  </button></div>
-   <div class="title"><img src="https://res.cloudinary.com/ddaoe4tdm/image/upload/v1668531915/tastehome2_msqitj.png" width="180px"></div>
-<div class="cart"><i class="fa-solid fa-bag-shopping fa-2x"></i></div>
-
-</div>
-
-</div>
-
-<div id="demo" class="collapse dropdown-content">
-<ul class="nav-content">
-<li class="nav-menu"><a href="<%= new_user_session_path %>">------ Sign in</a></li>
-<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Create an account</a></li>
-<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Offer a meal</a></li>
-<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Get a meal</a></li>
-<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ View orders</a></li>
-<li class="nav-menu"><a href="https://minimalistbaker.com/about/">------ Logout</a></li>
-</ul></div>
-
-
-<%# form here %>
-
 <div class="main-title">
   <h2 class="text-center">Welcome back</h2>
-  <h6 class="text-center">Enter your login details below.</h6>
+  <h6 class="login-text">Enter your login details below.</h6>
 </div>
 
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
-  <div class="form-inputs text-input-label">
+  <div class="form-inputs text-input-label form-floating">
     <%= f.input :email,
                 required: false,
-                autofocus: true,
                 label: false,
+                autofocus: true,
                 placeholder: "EMAIL",
-                input_html: { autocomplete: "email", class: "bg-dark p-2 text-dark bg-opacity-10 border-0 rounded-0" }%>
+                input_html: { autocomplete: "email", class: "border-0 rounded-0 label-style" }%>
     <%= f.input :password,
                 required: false,
                 label: false,
                 placeholder: "PASSWORD",
-                input_html: { autocomplete: "current-password", class: "bg-dark p-2 text-dark bg-opacity-10 border-0 rounded-0" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                input_html: { autocomplete: "current-password", class: "border-0 rounded-0 label-style" } %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable?%>
+
+    <%= f.button :submit, "Sign in", class: "login-btn" %>
+
   </div>
 
 
-  <div class="form-actions text-input-label">
-    <%= f.button :submit, "Log in", class: "btn" %>
-  </div>
 <% end %>
 
-  <div class="text-input-label">
-<%= render "devise/shared/links" %>
+<div class="text-input-label devise-links">
+   <%= render "devise/shared/links" %>
 </div>
