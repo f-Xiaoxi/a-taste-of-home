@@ -1,9 +1,23 @@
-<h1>New Meal</h1>
+<div class="main-title">
+  <h2 class="text-center">Add a meal</h2>
+  <h6 class="login-text">List a dish and wait for an offer</h6>
+</div>
 
-<%= simple_form_for @meal do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit 'Create Meal' %>
-<% end %>
+<div class="form-inputs text-input-label">
+  <%= simple_form_for @meal do |f| %>
+    <%= f.input :name,
+                label: false,
+                placeholder: "NAME OF DISH",
+                input_html: { class: "border-0 rounded-0 meal-label-style" } %>
+    <%= f.input :description,
+                label:false,
+                placeholder: "Ingredients, level of spice, etc...",
+                input_html: { class: "border-0 rounded-0 meal-label-style" } %>
+    <%= f.input :price,
+                label:false,
+                placeholder: "Price",
+                input_html: { class: "border-0 rounded-0 meal-label-style" } %>
+    <%= f.input :photo, as: :file, label:false %>
+    <%= f.submit 'Create your meal!', class: "login-btn border-0" %>
+  <% end %>
+</div>
