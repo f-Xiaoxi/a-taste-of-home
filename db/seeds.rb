@@ -74,22 +74,19 @@ puts "Creating orders..."
 Order.create!(
   meal: Meal.first,
   buyer: fai,
-  status: 'pending',
-  comment: 'Less spicy please'
+  status: 'pending'
 )
 
 Order.create!(
   meal: Meal.last,
   buyer: fai,
-  status: 'pending',
-  comment: 'Nil'
+  status: 'pending'
 )
 
 Order.create!(
   meal: Meal.last,
   buyer: zh,
-  status: 'pending',
-  comment: 'More onions'
+  status: 'pending'
 )
 
 puts "Done!"
