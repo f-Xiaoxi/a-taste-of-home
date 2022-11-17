@@ -3,23 +3,27 @@
 </div>
 
 <section class="card-container wrap">
-<% @meals.each do |meal|%>
-  <%= link_to meal_path(meal), class: "text-decoration-none" do %>
-    <div class="card border-0 ">
-      <div class="image">
-        <div class="card-category" style="height: 400px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key, height: 400, width: 400, crop: :fill %>')">
+<% if @meals.empty? %>
+  <p>You do not have any meals listed.</p>
+<% else %>
+  <% @meals.each do |meal|%>
+    <%= link_to meal_path(meal), class: "text-decoration-none" do %>
+      <div class="card border-0 ">
+        <div class="image">
+          <div class="card-category" style="height: 400px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key, height: 400, width: 400, crop: :fill %>')">
+          </div>
+          <div class="card-img-overlay">
+            <h6 class="bottom-right">$<%= meal.price %></h6>
+          </div>
         </div>
-        <div class="card-img-overlay">
-          <h6 class="bottom-right">$<%= meal.price %></h6>
-        </div>
-      </div>
 
-      <div class="card-body">
-        <h5 class="card-title">
-        <%= meal.name %>
-        </h5>
+        <div class="card-body">
+          <h5 class="card-title">
+          <%= meal.name %>
+          </h5>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 <% end %>
 </section>
