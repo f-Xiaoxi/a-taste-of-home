@@ -38,7 +38,6 @@
         <th>Date Ordered</th>
         <th>Name of Buyer</th>
         <th>Order Status</th>
-        <th>Seller's Comments</th>
         <th>Change Status</th>
       </tr>
       <% @sales.each do |order| %>
@@ -48,7 +47,6 @@
           <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
           <td><%= "#{order.buyer.first_name} #{order.buyer.last_name}" %></td>
           <td><%= order.status.capitalize %></td>
-          <td><%= order.comment %></td>
           <td>
             <% if ['completed', 'rejected'].exclude? order.status %>
               <%= simple_form_for order, html: { class: "row row-cols-5 g-2 align-items-center" } do |f| %>

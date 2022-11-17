@@ -12,7 +12,7 @@
       <br>
       <p class="text-center"><%= @meal.description %></p>
       <br>
-      <p class="meal_price">$<%= @meal.price %></p>
+      <p class="meal_price">$<%= sprintf('%.2f', @meal.price) %></p>
       <br>
         <%= simple_form_for [@meal, @order] do |f| %>
           <%= f.submit 'Order', class: "btn btnshow fs-5" %></i>
