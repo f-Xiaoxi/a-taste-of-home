@@ -70,43 +70,43 @@
   background-color: #FFDED6;
 }
 
-@media screen and (max-width: 628px) { /*transition size*/
+// @media screen and (max-width: 628px) { /*transition size*/
 
-  .container {
-      grid-template-columns: 1fr;
-   }
-  .card_content {
-      display: block;
-      padding: 20px;
-  }
-  .container {
-      padding: 0px 15px;
-      margin-left: 10px;
-  }
-  .img img {
-      width: 100%;
-      max-height: 450px;
-      object-fit:contain;
-  }
-  .btn {
-      width: 100%;
-  }
-  h1, h5, p, .price {
-     padding-bottom: 23px;
-  }
-}
+//   .container {
+//       grid-template-columns: 1fr;
+//    }
+//   .card_content {
+//       display: block;
+//       padding: 20px;
+//   }
+//   .container {
+//       padding: 0px 15px;
+//       margin-left: 10px;
+//   }
+//   .img img {
+//       width: 100%;
+//       max-height: 450px;
+//       object-fit:contain;
+//   }
+//   .btn {
+//       width: 100%;
+//   }
+//   h1, h5, p, .price {
+//      padding-bottom: 23px;
+//   }
+// }
 
-@media screen and (max-width: 376px) { /*mobile size*/
-  .container {
-      margin: 30px auto;
-  }
-  .img img {
-      max-height: 280px;
-  }
-  h1, h5, p, .price {
-      padding-bottom: 16px;
-   }
-}
+// @media screen and (max-width: 376px) { /*mobile size*/
+//   .container {
+//       margin: 30px auto;
+//   }
+//   .img img {
+//       max-height: 280px;
+//   }
+//   h1, h5, p, .price {
+//       padding-bottom: 16px;
+//    }
+// }
 
 
 // meal page
