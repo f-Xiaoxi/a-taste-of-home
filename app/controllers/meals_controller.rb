@@ -5,6 +5,10 @@ class MealsController < ApplicationController
     @meals = Meal.all
   end
 
+  def mine
+    @meals = Meal.where(user: current_user)
+  end
+
   def show
     @meal = Meal.find(params[:id])
     @order = Order.new
