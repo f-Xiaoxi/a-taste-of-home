@@ -1,11 +1,32 @@
-<h1><p><%= @meal.name %></p></h1>
+<div class="main-title">
+  <h2 class="text-center"><%= @meal.name %></h2>
+</div>
 
-<p><%= @meal.description %></p>
-<p><%= @meal.price %></p>
-<p><%= @meal.seller.first_name %></p>
+<%# cards %>
+<section class="card-container-show wrap ">
+  <div class="card border-0 ">
+    <div class="image">
+      <div class="card-category" style="height: 400px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path @meal.photo.key, height: 400, width: 400, crop: :fill %>')">
+    </div>
 
-<%= simple_form_for [@meal, @order] do |f| %>
-  <%= f.submit 'Create Order' %>
-<% end %>
+    <div class="card-body-show">
+      <h5 class="card-title">
+      <div class = "product-price">
+        <p>Price: <span><%= @meal.price %></span></p>
+      </div>
 
-<%# if completed %>
+      <div class = "product-detail">
+        <h2>About This Item: </h2>
+          <p><%= @meal.description %></p>
+      </div>
+
+      <div class = "purchase-info">
+        <button type = "button" class = "btn">
+         <%= simple_form_for [@meal, @order] do |f| %>
+            <%= f.submit 'Add', class: "btn"%></i>
+          <% end %>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
