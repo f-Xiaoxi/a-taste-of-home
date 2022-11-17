@@ -1,7 +1,112 @@
-.card-container-show {
-  align-items: start;
-  display: grid;
-  grid-gap: 35px;
-  justify-content: center;
-  width:95%;
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  align-items: center;
 }
+/*desktop size*/
+.meal-show-container {
+  padding: 0 20%
+}
+
+.meal-show-title {
+  font-family: 'jost', sans-serif;
+}
+
+.meal-image {
+  width: 50%;
+}
+
+.meal-info {
+  width: 50%
+}
+
+// .img img {
+//   max-width: 50%;
+//   display: inherit;
+//   object-fit:contain;
+//   height:max-content;
+// }
+
+// h1{
+//   background-color: white;
+// }
+
+// p {
+//   color: hsl(227, 8%, 52%);
+//   font-size: 15px;
+//   font-weight: 100;
+//   line-height: 1.5rem;
+// }
+// .prices {
+//   display:flex;
+//   align-items: center;
+// }
+.meal_price {
+  color:hsl(0, 0%, 0%);
+  font-size: 32px;
+}
+
+.row2 {
+  display:grid;
+  grid-template-columns: 4fr 3fr;
+  padding:0px;
+}
+
+
+.btnshow {
+  display: inline-block;
+  font-weight: 700;
+  color:hsl(0, 0%, 0%);
+  font-size: 14px;
+  background-color: #F9F6F1;
+  border-style: none;
+  height: 50px;
+  width: 200px;
+  cursor: pointer;
+}
+.btnshow:hover {
+  background-color: #FFDED6;
+}
+
+@media screen and (max-width: 628px) { /*transition size*/
+
+  .container {
+      grid-template-columns: 1fr;
+   }
+  .card_content {
+      display: block;
+      padding: 20px;
+  }
+  .container {
+      padding: 0px 15px;
+      margin-left: 10px;
+  }
+  .img img {
+      width: 100%;
+      max-height: 450px;
+      object-fit:contain;
+  }
+  .btn {
+      width: 100%;
+  }
+  h1, h5, p, .price {
+     padding-bottom: 23px;
+  }
+}
+
+@media screen and (max-width: 376px) { /*mobile size*/
+  .container {
+      margin: 30px auto;
+  }
+  .img img {
+      max-height: 280px;
+  }
+  h1, h5, p, .price {
+      padding-bottom: 16px;
+   }
+}
+
+
+// meal page
