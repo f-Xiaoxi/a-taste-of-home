@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     meal = Meal.find(params[:meal_id])
     order = Order.new(buyer: current_user, meal: meal, status: 'pending')
     order.save
+    redirect_to orders_path, notice: "Order submitted"
     # if @order.save
     #   completed = true
     # end
