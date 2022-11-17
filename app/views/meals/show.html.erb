@@ -16,14 +16,14 @@
       </div>
 
       <div class = "product-detail">
-        <h2>About This Item: </h2>
+        <h2>About this meal: </h2>
           <p><%= @meal.description %></p>
       </div>
 
       <div class = "purchase-info">
-        <button type = "button" class = "btn">
+        <button type = "button" class = "btn btn-submit">
          <%= simple_form_for [@meal, @order] do |f| %>
-            <%= f.submit 'Add', class: "btn"%></i>
+            <%= f.submit 'Order this meal', class: "btn"%></i>
           <% end %>
         </button>
       </div>

@@ -28,3 +28,18 @@ body {
   font-family: 'jost', sans-serif;
   color: #212121;
 }
+
+.btn-submit  {
+  background-color: #FFDED6;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.btn-submit:hover {
+  background-color: #FFDED6;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  opacity: 0.8;
+}
