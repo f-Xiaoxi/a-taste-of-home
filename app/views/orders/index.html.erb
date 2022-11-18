@@ -16,7 +16,7 @@
       <% @purchases.each do |order| %>
         <tr>
           <td><%= order.id %></td>
-          <td><%= order.meal.name %></td>
+          <td><%= link_to order.meal.name, meal_path(order.meal) %></td>
           <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
           <td><%= order.status.capitalize %></td>
           <td><%= order.comment %></td>
@@ -49,17 +49,36 @@
           <td><%= order.status.capitalize %></td>
           <td>
             <% if ['completed', 'rejected'].exclude? order.status %>
-              <%= simple_form_for order, html: { class: "row row-cols-5 g-2 align-items-center" } do |f| %>
-                <%= f.label :status, class: "col-auto" %>
+              <%#= simple_form_for order, html: { class: "row row-cols-5 g-2 align-items-center" } do |f| %>
+                <%#= f.label :status, class: "col-auto" %>
                 <% if order.status == 'pending' %>
-                  <%= f.input_field :status, collection: %w[pending accepted rejected], class: "col-auto me-2" %>
+
+                  <%= simple_form_for order do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                    <%= f.button :submit, 'Accept' %>
+                  <% end %>
+                  <%= simple_form_for order do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                    <%= f.button :submit, 'Reject' %>
+                  <% end %>
+                  <%#= f.input_field :status, collection: %w[pending accepted rejected], class: "col-auto me-2" %>
+
                 <% elsif  order.status == 'accepted' %>
-                  <%= f.input_field :status, collection: %w[accepted completed], class: "col-auto me-2" %>
+                  <%= simple_form_for order do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                    <%= f.button :submit, 'Accept' %>
+                  <% end %>
+                  <%= simple_form_for order do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                    <%= f.button :submit, 'Accept' %>
+                  <% end %>
+                  <%#= f.input_field :status, collection: %w[accepted completed], class: "col-auto me-2" %>
+
                 <% end %>
                 <%= f.label :comment, class: "col-auto" %>
                 <%= f.input_field :comment, class: "col-auto me-2" %>
                 <%= f.button :submit, class: "col-auto btn btn-light border border-dark border-1" %>
-              <% end %>
+              <%# end %>
             <% end %>
           </td>
         </tr>
