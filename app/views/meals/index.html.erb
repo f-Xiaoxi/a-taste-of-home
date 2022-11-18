@@ -1,7 +1,17 @@
 <div class="main-title">
   <h2 class="text-center">All Meals</h2>
 </div>
-
+<div class="d-flex justify-content-center">
+  <% @categories.each do |category| %>
+    <div class="d-flex align-items-center">
+      <%= form_with url: meals_path, method: :get do %>
+        <%= hidden_field_tag :category, category.name %>
+        <%= button_tag category.abbrev(category.name), class: "lg-circle #{category.abbrev(category.name)} mx-1 fw-bold d-flex justify-content-center align-items-center", alt: category.name %>
+      <% end %>
+      <p class="mb-0 me-3"><%= category.name %></p>
+    </div>
+  <% end %>
+</div>
 <%# cards %>
 <section class="card-container wrap ">
 <% @meals.each do |meal|%>
@@ -20,7 +30,11 @@
     </div>
     <div class="d-flex justify-content-center mt-2">
       <% meal.categories.each do |category| %>
-        <div class="circle <%= category.abbrev(category.name) %> mx-1 fw-bold d-flex justify-content-center align-items-center"><%= category.abbrev(category.name) %></div>
+        <%= form_with url: meals_path, method: :get do %>
+          <%= hidden_field_tag :category, category.name %>
+          <%= button_tag category.abbrev(category.name), class: "circle #{category.abbrev(category.name)} mx-1 fw-bold d-flex justify-content-center align-items-center" %>
+        <% end %>
+        <!-- <div class="circle <%= category.abbrev(category.name) %> mx-1 fw-bold d-flex justify-content-center align-items-center"><%= category.abbrev(category.name) %></div> -->
       <% end %>
     </div>
   </div>

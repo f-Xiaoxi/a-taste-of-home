@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_075348) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "meal_id"
-    t.string "status", null: false
+    t.string "status", default: "pending", null: false
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
