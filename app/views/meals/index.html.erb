@@ -5,17 +5,24 @@
 <%# cards %>
 <section class="card-container wrap ">
 <% @meals.each do |meal|%>
-  <%= link_to meal_path(meal), class: "text-decoration-none" do %>
+  <div class="d-flex flex-column">
     <div class="card border-0">
-      <div class="image">
-        <div class="card-category" style="height: 50vh; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key,crop: :fill %>')">
+      <%= link_to meal_path(meal), class: "text-decoration-none" do %>
+        <div class="image">
+          <div style="height: 400px; width: 250px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key,crop: :fill %>')">
+          </div>
         </div>
-      </div>
-      <div class="card-body mt-1">
-        <h5 class="card-title"><%= meal.name %></h5>
-        <h6 class="bottom-right">$<%= meal.price %></h6>
-      </div>
+        <div class="card-body mt-1">
+          <h5 class="card-title"><%= meal.name %></h5>
+          <h6 class="bottom-right">$<%= meal.price %></h6>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+    <div class="d-flex justify-content-center mt-2">
+      <% meal.categories.each do |category| %>
+        <div class="circle <%= category.abbrev(category.name) %> mx-1 fw-bold d-flex justify-content-center align-items-center"><%= category.abbrev(category.name) %></div>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 </section>
