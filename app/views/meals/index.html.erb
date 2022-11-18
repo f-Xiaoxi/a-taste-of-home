@@ -2,7 +2,7 @@
   <h2 class="text-center">All Meals</h2>
 </div>
 
-<div class="search-bar d-flex pb-5">
+<div class="search-bar d-flex pb-4">
   <%= form_with url: meals_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
@@ -13,6 +13,10 @@
       <i class="fa-solid fa-magnifying-glass"></i> Search
     <% end %>
   <% end %>
+</div>
+
+<div class="text-center fs-5 mb-5">
+  <%= link_to "CLEAR FILTERS", meals_path, class: "text-black" %>
 </div>
 
 
