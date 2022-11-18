@@ -24,7 +24,7 @@
       <button class="fa-solid fa-circle-user fa-2x collapsible d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="collapseExample">
       </button>
       <div class="user-message d-flex m-3 align-items-center">
-          Logged in as <%= current_user.first_name %>
+          Welcome, <%= current_user.first_name %> !
       </div>
         <% else %>
         <button class="fa-regular fa-circle-user fa-2x collapsible d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="collapseExample">
@@ -51,8 +51,10 @@
   <ul class="nav-content wrap">
     <div class="d-flex justify-content-start mb-1">
       <li class="nav-menu text-center">
+      <% if current_user %>
+      <% else %>
         <%= link_to new_user_session_path do %>
-        SIGN IN <i class="fa-solid fa-chevron-right"></i>
+          SIGN IN <i class="fa-solid fa-chevron-right"></i>
         <% end %>
       </li>
     </div>
@@ -62,6 +64,7 @@
           CREATE ACCOUNT <i class="fa-solid fa-chevron-right"></i>
         <% end %>
       </li>
+      <% end %>
     </div>
     <div class="d-flex justify-content-start mb-1">
       <li class="nav-menu">
@@ -86,8 +89,11 @@
     </div>
     <div class="d-flex justify-content-start mb-1">
         <li class="nav-menu">
+        <% if current_user %>
           <%= link_to destroy_user_session_path, data:{turbo_method: :delete} do %>
           LOG OUT <i class="fa-solid fa-chevron-right"></i>
+          <% end %>
+        <% else %>
         <% end %>
         </li>
     </div>
