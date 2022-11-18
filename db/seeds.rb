@@ -11,6 +11,8 @@ puts "Clearing old data..."
 Order.destroy_all
 Meal.destroy_all
 User.destroy_all
+Category.destroy_all
+Tag.destroy_all
 
 puts "Creating users..."
 fai = User.create!(
@@ -69,6 +71,18 @@ end
   meal.photo.attach(io: file, filename: "mealpic.png", content_type: "image/png")
   meal.save
 end
+
+puts "Creating categories..."
+Category.create!(name: 'Vegan')
+Category.create!(name: 'Vegetarian')
+Category.create!(name: 'Halal')
+Category.create!(name: 'Gluten-Free')
+Category.create!(name: 'Refined Sugar-Free')
+
+puts "Creating tags..."
+Tag.create!(meal: Meal.first, category: Category.first)
+Tag.create!(meal: Meal.first, category: Category.last)
+Tag.create!(meal: Meal.last, category: Category.first)
 
 puts "Creating orders..."
 Order.create!(
