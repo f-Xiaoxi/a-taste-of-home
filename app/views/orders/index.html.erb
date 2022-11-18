@@ -7,16 +7,18 @@
   <% else %>
     <table class="table table-bordered border-2 border-white align-middle">
       <tr>
-        <th scope="col" style="width: 7%" class="extra-bold">Order Id</th>
-        <th scope="col" style="width: 30%" class="extra-bold">Name of Meal</th>
-        <th scope="col" style="width: 17%" class="extra-bold">Date Ordered</th>
-        <th scope="col" style="width: 16%" class="extra-bold">Order Status</th>
-        <th scope="col" style="width: 30%" class="extra-bold">Seller's Comments</th>
+        <th scope="col" style="width: 8%">Order Id</th>
+        <th scope="col" style="width: 29%">Name of Meal</th>
+        <th scope="col" style="width: 11%">Price</th>
+        <th scope="col" style="width: 11%">Date Ordered</th>
+        <th scope="col" style="width: 11%">Order Status</th>
+        <th scope="col" style="width: 30%">Seller's Comments</th>
       </tr>
       <% @purchases.each do |order| %>
         <tr>
           <td><%= order.id %></td>
           <td><%= link_to order.meal.name, meal_path(order.meal) %></td>
+          <td>$<%= sprintf('%.2f', order.meal.price) %></td>
           <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
           <td><%= order.status.capitalize %></td>
           <td><%= order.comment %></td>
@@ -34,17 +36,19 @@
     <div class="table-responsive-md">
       <table class="table table-bordered border-2 border-white align-middle">
         <tr>
-          <th class="extra-bold" style="width: 7%">Order Id</th>
-          <th class="extra-bold" style="width: 21%">Name of Meal</th>
-          <th class="extra-bold" style="width: 17%">Date Ordered</th>
-          <th class="extra-bold" style="width: 17%">Name of Buyer</th>
-          <th class="extra-bold" style="width: 17%">Order Status</th>
-          <th class="extra-bold" style="width: 21%">Comments to Buyer</th>
+          <th style="width: 8%">Order Id</th>
+          <th style="width: 22%">Name of Meal</th>
+          <th style="width: 8%">Price</th>
+          <th style="width: 12%">Date Ordered</th>
+          <th style="width: 12%">Name of Buyer</th>
+          <th style="width: 15%">Order Status</th>
+          <th style="width: 23%">Comments to Buyer</th>
         </tr>
         <% @sales.each do |order| %>
           <tr>
             <td><%= order.id %></td>
-            <td><%= order.meal.name %></td>
+            <td><%= link_to order.meal.name, meal_path(order.meal) %></td>
+            <td>$<%= sprintf('%.2f', order.meal.price) %></td>
             <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
             <td><%= "#{order.buyer.first_name} #{order.buyer.last_name}" %></td>
             <td data-controller="display-buttons">
@@ -54,25 +58,24 @@
                   <i data-action="click->display-buttons#display" class="fa-solid fa-pen-to-square edit-link"></i>
                 <% end %>
               </span>
-              <div data-display-buttons-target="buttons" class="d-none">
-                <div class="d-flex">
+              <div data-display-buttons-target="buttons" class="d-none d-flex flex-wrap">
                 <% if order.status == 'pending' %>
 
-                    <%= simple_form_for order, html: { class: "d-flex align-items-center me-2" } do |f| %>
+                    <%= simple_form_for order, html: { class: "d-flex align-items-center m-1" } do |f| %>
                       <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                      <%= f.button :submit, 'Accept', class: "btn btn-success" %>
+                      <%= f.button :submit, 'Accept', class: "btn btn-success btn-sm" %>
                     <% end %>
-                    <%= simple_form_for order, html: { class: "d-flex align-items-center" } do |f| %>
+                    <%= simple_form_for order, html: { class: "d-flex align-items-center m-1" } do |f| %>
                       <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                      <%= f.button :submit, 'Reject', class: "btn btn-danger" %>
+                      <%= f.button :submit, 'Reject', class: "btn btn-danger btn-sm" %>
                     <% end %>
-                  </div>
+
 
                 <% elsif  order.status == 'accepted' %>
 
                   <%= simple_form_for order, html: { class: "d-flex align-items-center me-2" } do |f| %>
                     <%= f.input :status, as: :hidden, input_html: { value: 'completed'} %>
-                    <%= f.button :submit, 'Mark as completed', class: "btn btn-primary" %>
+                    <%= f.button :submit, 'Mark as completed', class: "btn btn-primary btn-sm" %>
                   <% end %>
 
                 <% end %>

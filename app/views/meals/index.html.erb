@@ -13,7 +13,7 @@
       </div>
       <div class="card-body mt-1">
         <h5 class="card-title"><%= meal.name %></h5>
-        <h6 class="bottom-right">$<%= meal.price %></h6>
+        <h6 class="bottom-right">$<%= sprintf('%.2f', meal.price) %></h6>
       </div>
     </div>
   <% end %>
