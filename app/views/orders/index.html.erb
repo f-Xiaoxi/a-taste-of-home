@@ -38,7 +38,7 @@
         <th>Date Ordered</th>
         <th>Name of Buyer</th>
         <th>Order Status</th>
-        <th>Change Status</th>
+        <th>My Comments</th>
       </tr>
       <% @sales.each do |order| %>
         <tr>
@@ -46,40 +46,8 @@
           <td><%= order.meal.name %></td>
           <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
           <td><%= "#{order.buyer.first_name} #{order.buyer.last_name}" %></td>
-          <td><%= order.status.capitalize %></td>
+          <td><%= order.status.capitalize %> <i class="fa-solid fa-pen-to-square edit-link"></i></td>
           <td>
-            <% if ['completed', 'rejected'].exclude? order.status %>
-              <%#= simple_form_for order, html: { class: "row row-cols-5 g-2 align-items-center" } do |f| %>
-                <%#= f.label :status, class: "col-auto" %>
-                <% if order.status == 'pending' %>
-
-                  <%= simple_form_for order do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                    <%= f.button :submit, 'Accept' %>
-                  <% end %>
-                  <%= simple_form_for order do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                    <%= f.button :submit, 'Reject' %>
-                  <% end %>
-                  <%#= f.input_field :status, collection: %w[pending accepted rejected], class: "col-auto me-2" %>
-
-                <% elsif  order.status == 'accepted' %>
-                  <%= simple_form_for order do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                    <%= f.button :submit, 'Accept' %>
-                  <% end %>
-                  <%= simple_form_for order do |f| %>
-                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                    <%= f.button :submit, 'Accept' %>
-                  <% end %>
-                  <%#= f.input_field :status, collection: %w[accepted completed], class: "col-auto me-2" %>
-
-                <% end %>
-                <%= f.label :comment, class: "col-auto" %>
-                <%= f.input_field :comment, class: "col-auto me-2" %>
-                <%= f.button :submit, class: "col-auto btn btn-light border border-dark border-1" %>
-              <%# end %>
-            <% end %>
           </td>
         </tr>
       <% end %>
