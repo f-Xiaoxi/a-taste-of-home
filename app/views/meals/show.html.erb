@@ -14,7 +14,7 @@
       <br>
       <p class="meal_price">$<%= sprintf('%.2f', @meal.price) %></p>
       <br>
-        <%= simple_form_for [@meal, @order] do |f| %>
+        <%= simple_form_for [@meal, @order], {html: {data: {turbo: false}}} do |f| %>
           <%= f.submit 'Order', class: "btn btnshow fs-5" %></i>
         <% end %>
     </div>
