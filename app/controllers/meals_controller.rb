@@ -2,7 +2,11 @@ class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @meals = Meal.all
+    if params[:query].present?
+      @meals = Meal.search_by_name_description_seller(params[:query])
+    else
+      @meals = Meal.all
+    end
   end
 
   def mine
