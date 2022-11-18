@@ -7,7 +7,7 @@
 }
 /*desktop size*/
 .meal-show-container {
-  padding: 0 20%
+  padding: 0 20%;
 }
 
 .meal-show-title {
@@ -16,13 +16,13 @@
 
 .meal-image {
   width: 50%;
-  height: 100vh;
+  height: 70vh;
   object-fit: cover;
   object-position: center;
 }
 
 .meal-info {
-  width: 50%
+  width: 50%;
 }
 
 // .img img {
@@ -58,20 +58,26 @@
 }
 
 
-.btnshow {
-  display: inline-block;
-  font-weight: 700;
-  color:hsl(0, 0%, 0%);
-  font-size: 14px;
-  background-color: #F9F6F1;
-  border-style: none;
-  height: 50px;
-  width: 200px;
-  cursor: pointer;
-}
-.btnshow:hover {
-  background-color: #FFDED6;
-}
+// .btnshow {
+//   display: inline-block;
+//   font-weight: 700;
+//   color:hsl(0, 0%, 0%);
+//   font-size: 14px;
+//   background-color: #e77260;
+//   border-style: none;
+//   height: 50px;
+//   width: 200px;
+//   cursor: pointer;
+//   border-radius: 5px;
+  // color: white;
+//   transition: all .15s ease-out;
+// }
+// .btnshow:hover {
+//   background-color: transparent;
+//   color: black
+// }
+
+
 
 // @media screen and (max-width: 628px) { /*transition size*/
 

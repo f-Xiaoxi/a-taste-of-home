@@ -1,0 +1,16 @@
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+  }
+}
+
+.meal-image-slider {
+  width: 15vh;
+  height: 15vh;
+  object-fit: cover;
+  object-position: center;
+}
