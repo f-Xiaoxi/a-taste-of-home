@@ -2,14 +2,16 @@
   <h2 class="text-center">All Meals</h2>
 </div>
 
-<div class="search-bar">
+<div class="search-bar d-flex pb-5">
   <%= form_with url: meals_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control",
+      class: "form-control fs-5",
       placeholder: "Find a meal"
     %>
-    <%= submit_tag "Search", class: "btn btnshow fs-5" %>
+    <%= button_tag nil, class: "btn btnshow fs-5 mx-3" do%>
+      Search <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
   <% end %>
 </div>
 
