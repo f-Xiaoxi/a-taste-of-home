@@ -3,7 +3,7 @@ class MealsController < ApplicationController
 
   def index
     if params[:query].present?
-      @meals = Meal.search_by_name_and_description(params[:query])
+      @meals = Meal.search_by_name_description_seller(params[:query])
     else
       @meals = Meal.all
     end
