@@ -6,19 +6,14 @@
 <section class="card-container wrap ">
 <% @meals.each do |meal|%>
   <%= link_to meal_path(meal), class: "text-decoration-none" do %>
-    <div class="card border-0 ">
+    <div class="card border-0">
       <div class="image">
-        <div class="card-category" style="width: 270px; height: 400px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key, height: 400, width: 400, crop: :fill %>')">
-        </div>
-        <div class="card-img-overlay">
-          <h6 class="bottom-right">$<%= meal.price %></h6>
+        <div class="card-category" style="height: 50vh; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key,crop: :fill %>')">
         </div>
       </div>
-
-      <div class="card-body">
-        <h5 class="card-title">
-        <%= meal.name %>
-        </h5>
+      <div class="card-body mt-1">
+        <h5 class="card-title"><%= meal.name %></h5>
+        <h6 class="bottom-right">$<%= meal.price %></h6>
       </div>
     </div>
   <% end %>
