@@ -16,6 +16,9 @@
 
 .meal-image {
   width: 50%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
 }
 
 .meal-info {

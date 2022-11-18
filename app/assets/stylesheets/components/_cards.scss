@@ -83,6 +83,10 @@ header, footer {
   position: relative;
 }
 
-// .card-category {
-//   width: 100%;
-// }
+.card-category {
+  width: 270px;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

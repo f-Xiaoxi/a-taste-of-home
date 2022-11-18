@@ -22,7 +22,7 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
     @meal.user = current_user
     if @meal.save
-      redirect_to meal_path(@meal)
+      redirect_to meal_path(@meal), notice: "Meal created successfully!"
     else
       render :new, status: :unprocessable_entity
     end

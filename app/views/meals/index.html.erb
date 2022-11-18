@@ -8,10 +8,10 @@
   <%= link_to meal_path(meal), class: "text-decoration-none" do %>
     <div class="card border-0 ">
       <div class="image">
-        <div class="card-category" style="width: 270px; height: 400px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key, height: 400, width: 400, crop: :fill %>')">
+        <div class="card-category" style="background-image: url('<%= cl_image_path meal.photo.key, height: 400, width: 400, crop: :fill %>')">
         </div>
         <div class="card-img-overlay">
-          <h6 class="bottom-right">$<%= meal.price %></h6>
+          <h6 class="bottom-right">$<%= sprintf('%.2f', meal.price) %></h6>
         </div>
       </div>
 
