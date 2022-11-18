@@ -15,13 +15,15 @@
   <% end %>
 </div>
 
-<div class="text-center fs-5 mb-5">
-  <%= link_to "CLEAR FILTERS", meals_path, class: "text-black" %>
-</div>
+<% if params[:query].present? %>
+  <div class="text-center fs-5">
+    <%= link_to "CLEAR FILTERS", meals_path, class: "text-black" %>
+  </div>
+<% end %>
 
 
 <%# cards %>
-<section class="card-container wrap ">
+<section class="card-container wrap mt-4">
 <% @meals.each do |meal|%>
   <%= link_to meal_path(meal), class: "text-decoration-none" do %>
     <div class="card border-0 ">
