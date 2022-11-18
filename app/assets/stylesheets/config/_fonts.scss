@@ -1,9 +1,10 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Josefin+Sans:wght@600&family=Jost:wght@600&family=Lekton&family=Lexend:wght@100;200;300;400;500;600;700&family=Roboto+Flex:wght@300&family=Source+Code+Pro&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: 'Lekton', sans-serif;
+$headers-font: "Lexend", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -16,7 +17,13 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 // $my-font: "Font Name";
 
 .page-title {
-  font-family: 'jost', sans-serif;
+  font-family: 'Lexend', sans-serif;
   color: #212121;
   margin: 30px 0
+}
+
+.footer {
+  p {
+    font-size:11px;
+  }
 }
