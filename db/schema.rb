@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_16_045403) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_075348) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_045403) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "meals", force: :cascade do |t|
     t.string "name", null: false
     t.float "price", null: false
@@ -63,6 +69,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_045403) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.bigint "meal_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tags_on_category_id"
+    t.index ["meal_id"], name: "index_tags_on_meal_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -82,4 +97,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_045403) do
   add_foreign_key "meals", "users"
   add_foreign_key "orders", "meals"
   add_foreign_key "orders", "users"
+  add_foreign_key "tags", "categories"
+  add_foreign_key "tags", "meals"
 end
