@@ -2,8 +2,28 @@
   <h2 class="text-center">All Meals</h2>
 </div>
 
+<div class="search-bar d-flex pb-4">
+  <%= form_with url: meals_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control fs-5",
+      placeholder: "Find a meal"
+    %>
+    <%= button_tag nil, class: "btn btnshow fs-5 mx-3" do%>
+      <i class="fa-solid fa-magnifying-glass"></i> Search
+    <% end %>
+  <% end %>
+</div>
+
+<% if params[:query].present? %>
+  <div class="text-center fs-5">
+    <%= link_to "CLEAR FILTERS", meals_path, class: "text-black" %>
+  </div>
+<% end %>
+
+
 <%# cards %>
-<section class="card-container wrap ">
+<section class="card-container wrap mt-4">
 <% @meals.each do |meal|%>
   <%= link_to meal_path(meal), class: "text-decoration-none" do %>
     <div class="card border-0">
