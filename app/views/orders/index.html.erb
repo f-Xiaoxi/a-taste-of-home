@@ -1,4 +1,6 @@
-<div class="container">
+    <%= render partial: 'shared/offcanvas', locals: { sales: @sales, pending: @pending } %>
+
+    <div class="index-container wrap">
   <h2 class="page-title">Your Orders</h2 class="page-title">
 
   <h3 class="mb-3">Purchases</h3>
@@ -7,16 +9,18 @@
   <% else %>
     <table class="table table-bordered border-2 border-white align-middle">
       <tr>
-        <th scope="col">Order Id</th>
-        <th scope="col">Name of Meal</th>
-        <th scope="col">Date Ordered</th>
-        <th scope="col">Order Status</th>
-        <th scope="col">Seller's Comments</th>
+        <th scope="col" style="width: 8%">Order Id</th>
+        <th scope="col" style="width: 29%">Name of Meal</th>
+        <th scope="col" style="width: 11%">Price</th>
+        <th scope="col" style="width: 11%">Date Ordered</th>
+        <th scope="col" style="width: 11%">Order Status</th>
+        <th scope="col" style="width: 30%">Seller's Comments</th>
       </tr>
       <% @purchases.each do |order| %>
         <tr>
           <td><%= order.id %></td>
-          <td><%= order.meal.name %></td>
+          <td><%= link_to order.meal.name, meal_path(order.meal) %></td>
+          <td>$<%= sprintf('%.2f', order.meal.price) %></td>
           <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
           <td><%= order.status.capitalize %></td>
           <td><%= order.comment %></td>
@@ -31,42 +35,70 @@
   <% if @sales.empty? %>
     <p>You have no sales.</p>
   <% else %>
-    <table class="table table-bordered border-2 border-white align-middle">
-      <tr>
-        <th>Order Id</th>
-        <th>Name of Meal</th>
-        <th>Date Ordered</th>
-        <th>Name of Buyer</th>
-        <th>Order Status</th>
-        <th>Seller's Comments</th>
-        <th>Change Status</th>
-      </tr>
-      <% @sales.each do |order| %>
+    <div class="table-responsive-md">
+      <table class="table table-bordered border-2 border-white align-middle">
         <tr>
-          <td><%= order.id %></td>
-          <td><%= order.meal.name %></td>
-          <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
-          <td><%= "#{order.buyer.first_name} #{order.buyer.last_name}" %></td>
-          <td><%= order.status.capitalize %></td>
-          <td><%= order.comment %></td>
-          <td>
-            <% if ['completed', 'rejected'].exclude? order.status %>
-              <%= simple_form_for order, html: { class: "row row-cols-5 g-2 align-items-center" } do |f| %>
-                <%= f.label :status, class: "col-auto" %>
-                <% if order.status == 'pending' %>
-                  <%= f.input_field :status, collection: %w[pending accepted rejected], class: "col-auto me-2" %>
-                <% elsif  order.status == 'accepted' %>
-                  <%= f.input_field :status, collection: %w[accepted completed], class: "col-auto me-2" %>
-                <% end %>
-                <%= f.label :comment, class: "col-auto" %>
-                <%= f.input_field :comment, class: "col-auto me-2" %>
-                <%= f.button :submit, class: "col-auto btn btn-light border border-dark border-1" %>
-              <% end %>
-            <% end %>
-          </td>
+          <th style="width: 8%">Order Id</th>
+          <th style="width: 22%">Name of Meal</th>
+          <th style="width: 8%">Price</th>
+          <th style="width: 12%">Date Ordered</th>
+          <th style="width: 12%">Name of Buyer</th>
+          <th style="width: 15%">Order Status</th>
+          <th style="width: 23%">Comments to Buyer</th>
         </tr>
-      <% end %>
-    </table>
+        <% @sales.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= link_to order.meal.name, meal_path(order.meal) %></td>
+            <td>$<%= sprintf('%.2f', order.meal.price) %></td>
+            <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+            <td><%= "#{order.buyer.first_name} #{order.buyer.last_name}" %></td>
+            <td data-controller="display-buttons">
+              <span data-display-buttons-target="initial">
+                <%= order.status.capitalize %>
+                <% if ['completed', 'rejected'].exclude? order.status %>
+                  <i data-action="click->display-buttons#display" class="fa-solid fa-pen-to-square edit-link"></i>
+                <% end %>
+              </span>
+              <div data-display-buttons-target="buttons" class="d-none d-flex flex-wrap">
+                <% if order.status == 'pending' %>
+
+                    <%= simple_form_for order, html: { class: "d-flex align-items-center m-1" } do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                      <%= f.button :submit, 'Accept', class: "btn btn-success btn-sm" %>
+                    <% end %>
+                    <%= simple_form_for order, html: { class: "d-flex align-items-center m-1" } do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                      <%= f.button :submit, 'Reject', class: "btn btn-danger btn-sm" %>
+                    <% end %>
+
+
+                <% elsif  order.status == 'accepted' %>
+
+                  <%= simple_form_for order, html: { class: "d-flex align-items-center me-2" } do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'completed'} %>
+                    <%= f.button :submit, 'Mark as completed', class: "btn btn-primary btn-sm" %>
+                  <% end %>
+
+                <% end %>
+              </div>
+              </td>
+            <td data-controller="edit-comment">
+              <span data-edit-comment-target="initial">
+                <%= order.comment %>
+                <i data-action="click->edit-comment#display" class="fa-solid fa-pen-to-square edit-link"></i>
+              </span>
+              <div data-edit-comment-target="field" class="d-none">
+                <%= simple_form_for order, html: { class: "d-flex align-items-center" } do |f| %>
+                  <%= f.input_field :comment %>
+                  <%= f.button :submit, class: "d-none" %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   <% end %>
   <br>
 </div>

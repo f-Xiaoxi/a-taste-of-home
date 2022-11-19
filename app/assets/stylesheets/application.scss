@@ -13,6 +13,7 @@
 @import "pages/index";
 @import "components/cardshow";
 @import "components/canvas";
+@import "pages/orders_index";
 
 // font
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Josefin+Sans:wght@600&family=Jost:wght@600&family=Lexend:wght@100;200;300;400;500;600;700&family=Roboto+Flex:wght@300&family=Source+Code+Pro&display=swap');
@@ -30,10 +31,6 @@ body {
   font-family: 'Lexend', sans-serif;
   color: #212121;
   margin: auto;
-}
-
-.table {
-  background-color: #ffe8e2;
 }
 
 .btn-submit  {
@@ -56,4 +53,8 @@ body {
   margin-top:50px;
   height:50px;
 
+}
+
+.container {
+  width: 95%;
 }

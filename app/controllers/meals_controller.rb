@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_pending
 
   def index
     @meals = Meal.all
@@ -22,7 +23,7 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
     @meal.user = current_user
     if @meal.save
-      redirect_to meal_path(@meal)
+      redirect_to meal_path(@meal), notice: "Meal created successfully!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,5 +33,13 @@ class MealsController < ApplicationController
 
   def meal_params
     params.require(:meal).permit(:name, :price, :description, :photo)
+  end
+
+  def set_pending
+    @sales = Order.select('orders.*')
+                  .joins(meal: :user)
+                  .where(users: { id: current_user.id })
+                  .order('id DESC')
+    @pending = @sales.where(status: 'pending')
   end
 end

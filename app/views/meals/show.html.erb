@@ -5,15 +5,16 @@
     <h2 class="meal-show-title mb-3"><%= @meal.name %></h2>
   </div>
   <div class="d-flex justify-content-center mx-auto">
-    <img class="meal-image" src="https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-600x900.jpg" alt="food">
+    <%= cl_image_tag @meal.photo.key, class: "meal-image" %>
+    <%# <img class="meal-image" src="https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-600x900.jpg" alt="food"> %>
     <div class="meal-info d-flex flex-column align-items-center p-3">
       <h3><strong>Description</strong></h3>
       <br>
       <p class="text-center"><%= @meal.description %></p>
       <br>
-      <p class="meal_price">$<%= @meal.price %></p>
+      <p class="meal_price">$<%= sprintf('%.2f', @meal.price) %></p>
       <br>
-        <%= simple_form_for [@meal, @order] do |f| %>
+        <%= simple_form_for [@meal, @order], {html: {data: {turbo: false}}} do |f| %>
           <%= f.submit 'Order', class: "btn btnshow fs-5" %></i>
         <% end %>
     </div>
