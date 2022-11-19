@@ -8,15 +8,13 @@
     </div>
   </div>
 
-    <%# if no pending orders %>
   <div class='some-page-wrapper'>
-    <%# <% if pending.count == 0 %>
       <h6 class="price">Please sign in to view pending orders</h6>
   </div>
  <%# button to orders page %>
   <div class='some-page-wrapper'>
-    <%= link_to orders_path do %>
-        <button type="button" class="btn view-order-btn">View all orders</button>
+    <%= link_to new_user_session_path do %>
+        <button type="button" class="btn view-order-btn">Sign in</button>
     <% end%>
   </div>
 </div>

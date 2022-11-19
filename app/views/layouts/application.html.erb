@@ -13,10 +13,10 @@
 
   <body>
     <%= render partial: "shared/navbar", locals: { pending: @pending } %>
-    <% if current_user == nil %>
-      <%= render partial: 'shared/guestoffcanvas' %>
-    <% else %>
+    <% if current_user %>
       <%= render partial: 'shared/offcanvas', locals: { sales: @sales, pending: @pending } %>
+    <% else %>
+      <%= render partial: 'shared/guestoffcanvas' %>
     <% end %>
     <%= yield %>
     <%= render "shared/footer" %>

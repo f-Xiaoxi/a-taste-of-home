@@ -36,6 +36,8 @@ class MealsController < ApplicationController
   end
 
   def set_pending
+    return unless current_user
+
     @sales = Order.select('orders.*')
                   .joins(meal: :user)
                   .where(users: { id: current_user.id })

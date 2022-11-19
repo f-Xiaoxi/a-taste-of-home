@@ -1,7 +1,7 @@
 <div class="top-nav">
   <div class="box index-container wrap">
     <div class="social">
-      <p>SHARE A MEAL, SHARE A CULTURE. get a taste of homecooked</p>
+      <p>SHARE A MEAL, SHARE A CULTURE. Get a taste of homecooked meals.</p>
     </div>
     <div>
       <ul class="social">
@@ -41,12 +41,11 @@
       <% end %>
     </div>
     <div class="cart">
-    <%# adding offcanvas here %>
-    <span class="app-icon fa-stack" data-count="<%= pending.count %>">
-
-      <button class="btn fa-solid fa-bag-shopping fa-2x" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></button>
-      <%# <i class="fa-solid fa-bag-shopping fa-2x"></i> %>
-</span>
+      <%# adding offcanvas here %>
+      <span class="app-icon fa-stack" data-count="<% if current_user %>
+      <%= pending.count%><% else %>0<% end %>">
+        <button class="btn fa-solid fa-bag-shopping fa-2x" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></button>
+      </span>
     </div>
   </div>
 </div>
@@ -94,13 +93,13 @@
     </div>
     <% if current_user %>
       <div class="d-flex justify-content-start mb-1">
-          <li class="nav-menu">
-            <%= link_to destroy_user_session_path, data:{turbo_method: :delete} do %>
+        <li class="nav-menu">
+          <%= link_to destroy_user_session_path, data:{turbo_method: :delete} do %>
             LOG OUT <i class="fa-solid fa-chevron-right"></i>
-            <% end %>
+          <% end %>
     <% else %>
-          </li>
+        </li>
     <% end %>
-    </div>
+      </div>
   </ul>
 </div>
