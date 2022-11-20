@@ -35,7 +35,7 @@ rich = User.create!(
   last_name: 'Ard'
 )
 
-puts "Creating meals..."
+puts "Creating ZH's meals..."
 3.times do
   file = URI.open("https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-1024x1536.jpg")
   meal = Meal.new(
@@ -48,6 +48,7 @@ puts "Creating meals..."
   meal.save
 end
 
+puts "Creating Fai's meals..."
 3.times do
   file = URI.open("https://minimalistbaker.com/wp-content/uploads/2022/09/FLUFFY-Maple-Pumpkin-Butter-Vegan-naturally-sweetened-4-ingredients-perfect-for-fall-minimalistbaker-recipe-plantbased-maple-pumpkin-butter-5-1024x1536.jpg")
   meal = Meal.new(
@@ -60,6 +61,7 @@ end
   meal.save
 end
 
+puts "Creating Rich's meals..."
 3.times do
   file = URI.open("https://minimalistbaker.com/wp-content/uploads/2022/09/Roasted-Cauliflower-Salad-with-Middle-Eastern-inspired-spices-Beautiful-fresh-and-just-30-minutes-minimalistbaker-recipe-plantbased-cauliflower-side-7-1024x1536.jpg")
   meal = Meal.new(
