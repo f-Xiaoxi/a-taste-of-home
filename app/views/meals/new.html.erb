@@ -17,8 +17,8 @@
                 label:false,
                 placeholder: "Price",
                 input_html: { class: "border-0 rounded-0 meal-label-style" } %>
-    <%= f.association :categories, label: false, input_html: { multiple: true, placeholder: 'Select categories', data: { controller: "tom-select", tom_select_options_value: {tags: true}} } %>
-    <%= f.input :photo, as: :file, label:false %>
+    <%= f.association :categories, label: false, input_html: { multiple: true, placeholder: 'Select categories', data: { controller: "tom-select", tom_select_options_value: {tags: true}}, class: "border-0 rounded-0 meal-label-style d-flex align-items-center" } %>
+    <%= f.input :photo, as: :file, label: false %>
     <%= f.submit 'Create your meal!', class: "login-btn border-0" %>
   <% end %>
 </div>
