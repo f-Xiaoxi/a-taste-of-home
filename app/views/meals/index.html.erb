@@ -4,9 +4,6 @@
 
 <div class="search-bar d-flex pb-2">
   <%= form_with url: meals_path, method: :get, class: "d-flex" do %>
-    <% if params[:category].present? %>
-      <input type="hidden" name="category" value="<%= params[:category] %>">
-    <% end %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control fs-5 search-form-style",
@@ -34,9 +31,6 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <form method="get" action="/meals" data-controller="auto-submit">
-      <% if params[:query].present? %>
-        <input type="hidden" name="query" value="<%= params[:query] %>">
-      <% end %>
       <li class="dropdown-item">
         <input type="checkbox" name="category[]" value="Vegan" id="Vegan" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Vegan')) %>>
         <label for="Vegan">Vegan</label>
