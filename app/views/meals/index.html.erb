@@ -6,7 +6,7 @@
   <%= form_with url: meals_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control fs-5",
+      class: "form-control fs-5 search-form-style",
       placeholder: "Find a meal"
     %>
     <%= button_tag nil, class: "btn btnshow fs-5 mx-3" do%>
