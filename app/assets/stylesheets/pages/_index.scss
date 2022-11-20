@@ -130,3 +130,16 @@ body {
   margin: 0 auto;
   max-width: 948px;
 }
+
+.dropdown-toggle-custom {
+  border: 1px solid black;
+  width: 200px;
+  height: 30px;
+  background-color: white;
+  padding: 3px;
+}
+
+.dropdown-menu {
+  border: 1px solid black;
+  width: 200px;
+}

@@ -20,9 +20,17 @@
   color: #2A2B2A;
 }
 
+.GF:hover {
+  background-color: #FFB5A3;
+}
+
 .VG {
   background-color: #F74639;
   color: white;
+}
+
+.VG:hover {
+  background-color: #F31A0A;
 }
 
 .V {
@@ -30,12 +38,24 @@
   color: white;
 }
 
+.V:hover {
+  background-color: #B45026;
+}
+
 .H {
   background-color: #003811;
   color: white;
 }
 
+.H:hover {
+  background-color: #000502;
+}
+
 .NS {
   background-color: #2A2B2A;
   color: white
+}
+
+.NS:hover {
+  background-color: #111111;
 }

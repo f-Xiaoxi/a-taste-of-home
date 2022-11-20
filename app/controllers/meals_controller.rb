@@ -2,7 +2,6 @@ class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @categories = Category.all
     if params[:category].present?
       @meals = Meal.joins(:categories)
                    .where(categories: { name: params[:category] })
