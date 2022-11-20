@@ -1,0 +1,33 @@
+.scroll-wrap {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .cardpc {
+    display: inline-block;
+  }
+}
+
+.meal-image-slider {
+  display: flex;
+  width: 270px;
+  height: 50vh;
+  object-fit: cover;
+  object-position: center;
+  // img {
+  // width: 500px;
+  // aspect-ratio: auto 500 / 750;
+  // height: 750px;
+}
+
+.info-left {
+  text-align: left;
+  width:47%;
+  display: inline-block
+}
+
+.info-right {
+  text-align: right;
+  width:47%;
+  display: inline-block;
+}
