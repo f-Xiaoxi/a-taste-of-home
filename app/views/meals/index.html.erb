@@ -2,6 +2,19 @@
   <h2 class="text-center">All Meals</h2>
 </div>
 
+<div class="search-bar d-flex pb-4">
+  <%= form_with url: meals_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control fs-5 search-form-style",
+      placeholder: "Find a meal"
+    %>
+    <%= button_tag nil, class: "btn btnshow fs-5 mx-3" do%>
+      <i class="fa-solid fa-magnifying-glass"></i> Search
+    <% end %>
+  <% end %>
+</div>
+
 <h3 class="text-center fs-5 mb-2">DIETARY RESTRICTIONS</h3>
 <div class="dropdown d-flex justify-content-center mb-4">
   <button class="dropdown-toggle-custom d-flex align-items-center" type="button" id="dropdownMenuButton1" data-bs-auto-close="false" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,37 +51,40 @@
         <input type="checkbox" name="category[]" value="Refined Sugar-Free" id="RefinedSugar-Free" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Refined Sugar-Free')) %>>
         <label for="RefinedSugar-Free">Refined Sugar-Free</label>
       </li>
-      <%# <li class="dropdown-item">
-        <input type="submit" value="submit">
-      </li> %>
     </form>
   </ul>
 </div>
 
-<section class="card-container wrap ">
-<% @meals.each do |meal|%>
-  <div class="d-flex flex-column">
-    <div class="card border-0">
-      <%= link_to meal_path(meal), class: "text-decoration-none" do %>
-        <div class="image">
-          <div style="height: 400px; width: 250px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key,crop: :fill %>')">
-          </div>
-        </div>
-        <div class="card-body mt-1">
-          <h5 class="card-title"><%= meal.name %></h5>
-          <h6 class="bottom-right">$<%= meal.price %></h6>
-        </div>
-      <% end %>
-    </div>
-    <div class="d-flex justify-content-center mt-2">
-      <% meal.categories.each do |category| %>
-        <%= form_with url: meals_path, method: :get do %>
-          <%= hidden_field_tag :category, category.name %>
-          <%= button_tag category.abbrev(category.name), class: "circle #{category.abbrev(category.name)} mx-1 fw-bold d-flex justify-content-center align-items-center" %>
-        <% end %>
-        <!-- <div class="circle <%= category.abbrev(category.name) %> mx-1 fw-bold d-flex justify-content-center align-items-center"><%= category.abbrev(category.name) %></div> -->
-      <% end %>
-    </div>
+<% if params[:query].present? %>
+  <div class="text-center fs-5">
+    <%= link_to "CLEAR FILTERS", meals_path, class: "text-black" %>
   </div>
 <% end %>
+
+<section class="card-container wrap mt-4">
+  <% @meals.each do |meal|%>
+    <div class="d-flex flex-column">
+      <div class="card border-0">
+        <%= link_to meal_path(meal), class: "text-decoration-none" do %>
+          <div class="image">
+            <div style="height: 400px; width: 250px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key,crop: :fill %>')">
+            </div>
+          </div>
+
+          <div class="card-body mt-1">
+            <h5 class="card-title"><%= meal.name %></h5>
+            <h6 class="bottom-right">$<%= sprintf('%.2f', meal.price) %></h6>
+          </div>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-center mt-2">
+        <% meal.categories.each do |category| %>
+          <%= form_with url: meals_path, method: :get do %>
+            <%= hidden_field_tag :category, category.name %>
+            <%= button_tag category.abbrev(category.name), class: "circle #{category.abbrev(category.name)} mx-1 fw-bold d-flex justify-content-center align-items-center" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </section>

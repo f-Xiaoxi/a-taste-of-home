@@ -11,12 +11,11 @@ class OrdersController < ApplicationController
   def create
     meal = Meal.find(params[:meal_id])
     order = Order.new(buyer: current_user, meal: meal, status: 'pending')
-    order.save
-    redirect_to orders_path, notice: "Order submitted"
-
-    # if @order.save
-    #   completed = true
-    # end
+    if order.save
+      redirect_to meal_path(meal), notice: "Order created successfully!"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update

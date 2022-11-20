@@ -5,6 +5,8 @@ class MealsController < ApplicationController
     if params[:category].present?
       @meals = Meal.joins(:categories)
                    .where(categories: { name: params[:category] })
+    elsif params[:query].present?
+      @meals = Meal.search_by_name_description_seller(params[:query])
     else
       @meals = Meal.all
     end

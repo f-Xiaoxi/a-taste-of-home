@@ -1,23 +1,66 @@
-<%= link_to "Back to Home", meals_path, class: "btn btnshow mt-3 ms-5 d-flex align-items-center justify-content-center" %>
 
-<div class="meal-show-container">
-  <div class="row">
-    <h2 class="meal-show-title mb-3"><%= @meal.name %></h2>
-  </div>
-  <div class="d-flex justify-content-center mx-auto">
-    <%= cl_image_tag @meal.photo.key, class: "meal-image" %>
-    <%# <img class="meal-image" src="https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-600x900.jpg" alt="food"> %>
-    <div class="meal-info d-flex flex-column align-items-center p-3">
-      <h3><strong>Description</strong></h3>
-      <br>
-      <p class="text-center"><%= @meal.description %></p>
-      <br>
-      <p class="meal_price">$<%= sprintf('%.2f', @meal.price) %></p>
-      <br>
-        <%= simple_form_for [@meal, @order], {html: {data: {turbo: false}}} do |f| %>
-          <%= f.submit 'Order', class: "btn btnshow fs-5" %></i>
-        <% end %>
+
+<div class="index-container wrap">
+  <div class="meal-show-container mt-5 mb-5">
+    <%# <div class="row">
+      <h2 class="meal-show-title mb-3"><%= @meal.name %>
+    <%# </h2></div> %>
+    <%# <%= link_to "Back to Home", meals_path, class: "btn show-btn mb-5 d-flex align-items-center justify-content-center" %>
+    <div class="d-flex justify-content-center mx-auto">
+      <%= cl_image_tag @meal.photo.key, class: "meal-image" %>
+      <%# <img class="meal-image" src="https://minimalistbaker.com/wp-content/uploads/2022/09/STUNNING-Potato-Gratin-with-Vegan-Cream-Sauce-8-ingredients-tender-potatoes-perfect-for-the-holidays-minimalistbaker-recipe-plantbased-potato-gratin-8-600x900.jpg" alt="food"> %>
+      <div class="meal-info flex-column align-items-center p-3">
+        <h2 class="meal-show-title mb-2"><%= @meal.name %></h2>
+        <h6 class="fw-light">by <%= "#{@meal.user.first_name} #{@meal.user.last_name}" %></h6>
+        <br>
+        <h5 class="font-weight-bold mt-3 mb-2">Description:</h5>
+        <p class="text-left"><%= @meal.description %></p>
+        <br>
+        <p class="meal_price">$<%= sprintf('%.2f', @meal.price) %></p>
+        <br>
+
+        <%# <div class="d-flex justify-content-center">
+          <div class="mr-auto p-1"> %>
+            <%= simple_form_for [@meal, @order], {html: {data: {turbo: false}}} do |f| %>
+              <% if @meal.user != current_user %>
+                <%# <%= f.submit 'Order', class: "btn show-btn fs-5" %>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                  <%= f.submit 'Order', class: "btn show-btn" %>
+                  <%= link_to 'Back to Home', meals_path, class: "btn showhome-btn" %>
+                </div>
+
+              <% else %>
+                <%# <% "You are the seller" %>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                  <%= f.submit "You're the seller!", class: "btn show-btn", disabled: true %>
+                  <%= link_to 'Back to Home', meals_path, class: "btn showhome-btn" %>
+                </div>
+              <% end %>
+            <% end %>
+          <%# </div> %>
+
+          <%# <div class="p1"> %>
+            <%# <%= link_to "Back to Home", meals_path, class: "btn login-btn d-flex align-items center justify-content-center" %>
+          <%# </div> %>
+        <%# </div> %>
+      </div>
     </div>
-   </div>
   </div>
+
+
+ <hr>
+
+  <h4 class="mt-5 mb-3">More Products By <%= "#{@meal.user.first_name} #{@meal.user.last_name}" %></h4>
+
+    <div class="scroll-wrap">
+      <% @meal.user.meals.each do |meal|  %>
+        <div class="cardpc m-2">
+        <%= link_to meal_path(meal), class: "text-decoration-none" do %>
+          <%= cl_image_tag meal.photo.key, class: "meal-image-slider" %>
+          <h5 class="card-title info-left"><%= meal.name %></h5>
+          <h5 class="bottom-right info-right">$<%= sprintf('%.2f', meal.price) %></h5>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
 </div>
