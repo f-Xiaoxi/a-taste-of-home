@@ -1,0 +1,20 @@
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+
+<%# Title and x mark %>
+  <div class="canvas-container">
+    <div class="d-flex some-page-wrapper justify-content-between">
+      <h5 class="mt-2 mb-2">Your pending orders</h5>
+      <button type="button" class="btn p-0 fa-solid fa-xmark fa-2x " data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div class='some-page-wrapper'>
+      <h6 class="price">Please sign in to view pending orders</h6>
+  </div>
+ <%# button to orders page %>
+  <div class='some-page-wrapper'>
+    <%= link_to new_user_session_path do %>
+        <button type="button" class="btn view-order-btn">Sign in</button>
+    <% end%>
+  </div>
+</div>

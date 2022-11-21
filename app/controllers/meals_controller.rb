@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_pending
 
   def index
     if params[:category].present?
@@ -43,5 +44,15 @@ class MealsController < ApplicationController
 
   def meal_params
     params.require(:meal).permit(:name, :price, :description, :photo, category_ids: [])
+  end
+
+  def set_pending
+    return unless current_user
+
+    @sales = Order.select('orders.*')
+                  .joins(meal: :user)
+                  .where(users: { id: current_user.id })
+                  .order('id DESC')
+    @pending = @sales.where(status: 'pending')
   end
 end
