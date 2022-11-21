@@ -3,7 +3,7 @@
 <%# Title and x mark %>
   <div class="canvas-container">
     <div class="d-flex some-page-wrapper justify-content-between">
-      <h5 class="mt-2 mb-2">(<%=pending.count%>) pending orders</h5>
+      <h5 class="mt-2 mb-2">(<%=pending.count%>) new orders</h5>
       <button type="button" class="btn p-0 fa-solid fa-xmark fa-2x " data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
   </div>
@@ -11,21 +11,21 @@
     <%# if no pending orders %>
   <div class='some-page-wrapper'>
     <% if pending.count == 0 %>
-      <h6 class="price">Your have no pending orders</h6>
+      <h6 class="price">You have no new orders</h6>
     <% else %>
     <%# if there are pending orders %>
       <% sales.each do |order| %>
         <% if order.status == 'pending' %>
-        <div class='date'>
-          <h6 class="date">DATE: <%= order.meal.created_at.to_s.split(" ").first %>, <%= order.meal.created_at.to_s.split(" ")[1][0,5] %></p>
-        </div>
+        <%# <div class='date'>
+          <h6 class="date">DATE: <%= order.meal.created_at.to_s.split(" ").first %><%#, <%= order.meal.created_at.to_s.split(" ")[1][0,5] %><%#</p> %>
+        <%#</div> %>
           <div class='canvasrow'>
             <div class='canvas-double-column'>
               <%= cl_image_tag order.meal.photo.key, height: 130, width: 100, crop: :fill %>
             </div>
             <div class='canvas-double-column m-1'>
               <h6 class="pt-2"><%= order.meal.name %></h6>
-              <h6 class="price">$<%= order.meal.price %></h6>
+              <h6 class="price">$<%= sprintf('%.2f', order.meal.price) %></h6>
               <h6 class="price"><%= "Buyer: #{order.buyer.first_name} #{order.buyer.last_name}" %></h6>
             </div>
           </div>
@@ -33,11 +33,11 @@
             <div class='d-flex justify-content-between pb-4 border-bottom'>
               <%= simple_form_for order, html: { class: "align-items-center" } do |f| %>
                 <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                <%= f.button :submit, 'Accept', class: "btn-success accept-btn" %>
+                <%= f.button :submit, 'Accept', class: "btn btn-accept accept-btn" %>
               <% end %>
               <%= simple_form_for order, html: { class: "align-items-center" } do |f| %>
                 <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                <%= f.button :submit, 'Reject', class: "btn btn-danger accept-btn" %>
+                <%= f.button :submit, 'Reject', class: "btn btn-reject accept-btn" %>
               <% end %>
             </div>
 

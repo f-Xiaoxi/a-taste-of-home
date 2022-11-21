@@ -65,11 +65,11 @@
 
                     <%= simple_form_for order, html: { class: "d-flex align-items-center m-1" } do |f| %>
                       <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                      <%= f.button :submit, 'Accept', class: "btn btn-success btn-sm" %>
+                      <%= f.button :submit, 'Accept', class: "btn btn-accept btn-sm" %>
                     <% end %>
                     <%= simple_form_for order, html: { class: "d-flex align-items-center m-1" } do |f| %>
                       <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                      <%= f.button :submit, 'Reject', class: "btn btn-danger btn-sm" %>
+                      <%= f.button :submit, 'Reject', class: "btn btn-reject btn-sm" %>
                     <% end %>
 
 
