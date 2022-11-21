@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AutoSubmitController from "./auto_submit_controller"
+application.register("auto-submit", AutoSubmitController)
+
 import DisplayButtonsController from "./display_buttons_controller"
 application.register("display-buttons", DisplayButtonsController)
 
@@ -12,3 +15,6 @@ application.register("edit-comment", EditCommentController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)

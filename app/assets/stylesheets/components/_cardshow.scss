@@ -121,24 +121,20 @@
 //   margin-top: 10px;
 // }
 
-// .btnshow {
-//   display: inline-block;
-//   font-weight: 700;
-//   color:hsl(0, 0%, 0%);
-//   font-size: 14px;
-//   background-color: #e77260;
-//   border-style: none;
-//   height: 50px;
-//   width: 200px;
-//   cursor: pointer;
-//   border-radius: 5px;
-  // color: white;
-//   transition: all .15s ease-out;
-// }
-// .btnshow:hover {
-//   background-color: transparent;
-//   color: black
-// }
+.btnshow {
+  display: inline-block;
+  font-weight: 700;
+  color:hsl(0, 0%, 0%);
+  font-size: 14px;
+  background-color: #F9F6F1;
+  border-style: none;
+  height: 50px;
+  width: 200px;
+  cursor: pointer;
+}
+.btnshow:hover {
+  background-color: #FFDED6;
+}
 
 
 

@@ -3,7 +3,11 @@ class MealsController < ApplicationController
   before_action :set_pending
 
   def index
-    if params[:query].present?
+    if params[:category].present?
+      @meals = Meal.joins(:categories)
+                   .where(categories: { name: params[:category] })
+                   .distinct
+    elsif params[:query].present?
       @meals = Meal.search_by_name_description_seller(params[:query])
     else
       @meals = Meal.all
@@ -26,6 +30,9 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     @meal.user = current_user
+    meal_params[:category_ids][1..].each do |id|
+      Tag.new(meal: @meal, category: Category.find(id.to_i))
+    end
     if @meal.save
       redirect_to meal_path(@meal), notice: "Meal created successfully!"
     else
@@ -36,7 +43,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :price, :description, :photo)
+    params.require(:meal).permit(:name, :price, :description, :photo, category_ids: [])
   end
 
   def set_pending

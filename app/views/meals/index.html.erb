@@ -2,7 +2,7 @@
   <h2 class="text-center">All Meals</h2>
 </div>
 
-<div class="search-bar d-flex pb-4">
+<div class="search-bar d-flex pb-3">
   <%= form_with url: meals_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
@@ -15,27 +15,77 @@
   <% end %>
 </div>
 
-<% if params[:query].present? %>
+<h3 class="text-center fs-5 mb-2">DIETARY RESTRICTIONS</h3>
+<div class="dropdown d-flex justify-content-center mb-4">
+  <button class="dropdown-toggle-custom d-flex align-items-center" type="button" id="dropdownMenuButton1" data-bs-auto-close="false" data-bs-toggle="dropdown" aria-expanded="false">
+    <p style="overflow: hidden" class="flex-grow-1 mb-0 h-100">
+      <% if params[:category].present? %>
+        <%= params[:category].join(', ') %>
+      <% else %>
+        Any
+      <% end %>
+    </p>
+    <div class="bg-white" style="width: 18px;">
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <form method="get" action="/meals" data-controller="auto-submit">
+      <li class="dropdown-item">
+        <input type="checkbox" name="category[]" value="Vegan" id="Vegan" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Vegan')) %>>
+        <label for="Vegan">Vegan</label>
+      </li>
+      <li class="dropdown-item">
+        <input type="checkbox" name="category[]" value="Vegetarian" id="Vegetarian" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Vegetarian')) %>>
+        <label for="Vegetarian">Vegetarian</label>
+      </li>
+      <li class="dropdown-item">
+        <input type="checkbox" name="category[]" value="Halal" id="Halal" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Halal')) %>>
+        <label for="Halal">Halal</label>
+      </li>
+      <li class="dropdown-item">
+        <input type="checkbox" name="category[]" value="Gluten-Free" id="Gluten-Free" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Gluten-Free')) %>>
+        <label for="Gluten-Free">Gluten-Free</label>
+      </li>
+      <li class="dropdown-item">
+        <input type="checkbox" name="category[]" value="Refined Sugar-Free" id="RefinedSugar-Free" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Refined Sugar-Free')) %>>
+        <label for="RefinedSugar-Free">Refined Sugar-Free</label>
+      </li>
+    </form>
+  </ul>
+</div>
+
+<% if (params[:query].present? || params[:category].present?) %>
   <div class="text-center fs-5">
     <%= link_to "CLEAR FILTERS", meals_path, class: "text-black" %>
   </div>
 <% end %>
 
-
-<%# cards %>
-<section class="card-container wrap ">
+<section class="card-container wrap mt-4">
   <% @meals.each do |meal|%>
-    <%= link_to meal_path(meal), class: "text-decoration-none" do %>
+    <div class="d-flex flex-column">
       <div class="card border-0">
-        <div class="image">
-          <div class="card-category" style="height: 50vh; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key,crop: :fill %>')">
+        <%= link_to meal_path(meal), class: "text-decoration-none" do %>
+          <div class="image">
+            <div style="height: 400px; width: 250px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key,crop: :fill %>')">
+            </div>
           </div>
-        </div>
-        <div class="card-body mt-1">
-          <h5 class="card-title"><%= meal.name %></h5>
-          <h6 class="bottom-right">$<%= sprintf('%.2f', meal.price) %></h6>
-        </div>
+
+          <div class="card-body mt-1">
+            <h5 class="card-title"><%= meal.name %></h5>
+            <h6 class="bottom-right">$<%= sprintf('%.2f', meal.price) %></h6>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+      <div class="d-flex justify-content-center mt-2">
+        <% meal.categories.each do |category| %>
+          <%= form_with url: meals_path, method: :get do %>
+            <input type="hidden" name="category[]" id="category" value="<%= category.name %>" autocomplete="off">
+            <%#= hidden_field_tag :category, category.name %>
+            <%= button_tag category.abbrev(category.name), class: "circle #{category.abbrev(category.name)} mx-1 fw-bold d-flex justify-content-center align-items-center" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </section>
