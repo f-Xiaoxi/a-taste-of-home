@@ -23,19 +23,19 @@
 
 
 <%# cards %>
-<section class="card-container wrap mt-4">
-<% @meals.each do |meal|%>
-  <%= link_to meal_path(meal), class: "text-decoration-none" do %>
-    <div class="card border-0">
-      <div class="image">
-        <div class="card-category" style="height: 50vh; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key,crop: :fill %>')">
+<section class="card-container wrap ">
+  <% @meals.each do |meal|%>
+    <%= link_to meal_path(meal), class: "text-decoration-none" do %>
+      <div class="card border-0">
+        <div class="image">
+          <div class="card-category" style="height: 50vh; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('<%= cl_image_path meal.photo.key,crop: :fill %>')">
+          </div>
+        </div>
+        <div class="card-body mt-1">
+          <h5 class="card-title"><%= meal.name %></h5>
+          <h6 class="bottom-right">$<%= sprintf('%.2f', meal.price) %></h6>
         </div>
       </div>
-      <div class="card-body mt-1">
-        <h5 class="card-title"><%= meal.name %></h5>
-        <h6 class="bottom-right">$<%= sprintf('%.2f', meal.price) %></h6>
-      </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
 </section>

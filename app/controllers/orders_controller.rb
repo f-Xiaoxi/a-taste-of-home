@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
                   .joins(meal: :user)
                   .where(users: { id: current_user.id })
                   .order('id DESC')
+    @pending = @sales.where(status: 'pending')
   end
 
   def create
