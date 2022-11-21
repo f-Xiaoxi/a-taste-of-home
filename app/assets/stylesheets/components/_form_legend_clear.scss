@@ -167,3 +167,29 @@ legend ~ div.form-check:first-of-type {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
+.btn:active {
+  border: none;
+}
+
+.btn {
+  border:none;
+}
+
+.btn-accept {
+  background-color: #77DD77;
+}
+
+.btn-accept:hover {
+  background-color: #77DD77;
+  color:black;
+}
+
+.btn-reject {
+  background-color: #ff6961;
+}
+
+.btn-reject {
+  background-color: #ff6961;
+  color:black;
+}

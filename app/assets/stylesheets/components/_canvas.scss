@@ -8,12 +8,12 @@
   font-family: 'Lekton', sans-serif;
 }
 
-.date {
-  font-size: 15px;
-  font-family: 'Lekton', sans-serif;
-  margin-bottom:0px;
-  margin-top: 15px;
-}
+// .date {
+//   font-size: 15px;
+//   font-family: 'Lekton', sans-serif;
+//   margin-bottom:0px;
+//   margin-top: 15px;
+// }
 
 .some-page-wrapper {
   margin: 15px auto;
@@ -32,6 +32,7 @@
   width: 100%;
   margin: auto;
   margin-bottom:5px;
+  margin-top: 15px;
 }
 
 .canvas-double-column {
@@ -65,10 +66,10 @@
 // pending count
 
 .app-icon[data-count]:not([data-count=""]):not([data-count="0"]):after {
-  position: absolute;
+  position: relative;
   display: flex;
-  right: -25%;
-  top: 80%;
+  right: -115%;
+  top: 100%;
   content: attr(data-count);
   font-size: 12px;
   border-radius: 50%;
