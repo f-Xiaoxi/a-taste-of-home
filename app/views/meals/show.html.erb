@@ -15,7 +15,8 @@
         <div class="d-flex mt-3">
           <% @meal.categories.each do |category| %>
             <%= form_with url: meals_path, method: :get do %>
-              <%= hidden_field_tag :category, category.name %>
+              <input type="hidden" name="category[]" id="category" value="<%= category.name %>" autocomplete="off">
+              <%#= hidden_field_tag :category, category.name %>
               <%= button_tag category.abbrev(category.name), class: "circle #{category.abbrev(category.name)} mx-1 fw-bold d-flex justify-content-center align-items-center" %>
             <% end %>
           <% end %>

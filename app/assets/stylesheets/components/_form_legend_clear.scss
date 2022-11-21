@@ -189,7 +189,16 @@ legend ~ div.form-check:first-of-type {
   background-color: #ff6961;
 }
 
-.btn-reject {
+.btn-reject:hover {
   background-color: #ff6961;
+  color:black;
+}
+
+.btn-completed {
+  background-color: #61c0ff;
+}
+
+.btn-completed:hover {
+  background-color: #61c0ff;
   color:black;
 }

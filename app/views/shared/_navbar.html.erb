@@ -24,14 +24,12 @@
       <button class="fa-solid fa-circle-user fa-2x collapsible d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="collapseExample">
       </button>
       <div class="user-message d-flex m-3 align-items-center">
-          Welcome, <%= current_user.first_name %> !
+          Welcome, <%= current_user.first_name %>!
       </div>
     <% else %>
       <button class="fa-regular fa-circle-user fa-2x collapsible d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="collapseExample">
       </button>
-      <div class="user-message d-flex m-3 align-items-center">
-        Welcome, guest
-      </div>
+
     <% end %>
     </div>
     <div class="title">

@@ -77,7 +77,7 @@
 
                   <%= simple_form_for order, html: { class: "d-flex align-items-center me-2" } do |f| %>
                     <%= f.input :status, as: :hidden, input_html: { value: 'completed'} %>
-                    <%= f.button :submit, 'Mark as completed', class: "btn btn-primary btn-sm" %>
+                    <%= f.button :submit, 'Mark as completed', class: "btn btn-completed btn-sm" %>
                   <% end %>
 
                 <% end %>

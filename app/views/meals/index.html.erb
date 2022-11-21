@@ -33,23 +33,23 @@
     <form method="get" action="/meals" data-controller="auto-submit">
       <li class="dropdown-item">
         <input type="checkbox" name="category[]" value="Vegan" id="Vegan" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Vegan')) %>>
-        <label for="Vegan">Vegan</label>
+        <label class="w-100" for="Vegan">Vegan (V)</label>
       </li>
       <li class="dropdown-item">
         <input type="checkbox" name="category[]" value="Vegetarian" id="Vegetarian" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Vegetarian')) %>>
-        <label for="Vegetarian">Vegetarian</label>
+        <label class="w-100" for="Vegetarian">Vegetarian (VG)</label>
       </li>
       <li class="dropdown-item">
         <input type="checkbox" name="category[]" value="Halal" id="Halal" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Halal')) %>>
-        <label for="Halal">Halal</label>
+        <label class="w-100" for="Halal">Halal (H)</label>
       </li>
       <li class="dropdown-item">
         <input type="checkbox" name="category[]" value="Gluten-Free" id="Gluten-Free" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Gluten-Free')) %>>
-        <label for="Gluten-Free">Gluten-Free</label>
+        <label class="w-100" for="Gluten-Free">Gluten-Free (GF)</label>
       </li>
       <li class="dropdown-item">
         <input type="checkbox" name="category[]" value="Refined Sugar-Free" id="RefinedSugar-Free" data-action="change->auto-submit#submit" <%= 'checked' if (params[:category].present? && params[:category].include?('Refined Sugar-Free')) %>>
-        <label for="RefinedSugar-Free">Refined Sugar-Free</label>
+        <label class="w-100" for="RefinedSugar-Free">Refined Sugar-Free (NS)</label>
       </li>
     </form>
   </ul>
