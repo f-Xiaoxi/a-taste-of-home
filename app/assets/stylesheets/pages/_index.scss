@@ -130,3 +130,20 @@ body {
   margin: 0 auto;
   max-width: 948px;
 }
+
+.search-bar {
+  justify-content: center;
+  margin: auto;
+}
+
+.search-form-style {
+  background-color: white !important;
+  border: 1px solid black !important;
+  color: black !important;
+  font-family: 'Lekton', sans-serif;
+}
+
+.search-form-style::placeholder {
+  font-size: 1rem;
+  letter-spacing: .1em;
+}

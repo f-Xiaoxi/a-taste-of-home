@@ -6,8 +6,12 @@
   align-items: center;
 }
 /*desktop size*/
+// .meal-show-container {
+//   padding: 0 20%;
+// }
+
 .meal-show-container {
-  padding: 0 20%
+  width: 100%;
 }
 
 .meal-show-title {
@@ -15,14 +19,16 @@
 }
 
 .meal-image {
-  width: 50%;
-  height: 100vh;
+  width: 40%;
+  height: 70vh;
   object-fit: cover;
   object-position: center;
+  margin-left: 2rem;
 }
 
 .meal-info {
-  width: 50%
+  width: 40%;
+  margin-left: 3rem;
 }
 
 // .img img {
@@ -49,29 +55,92 @@
 .meal_price {
   color:hsl(0, 0%, 0%);
   font-size: 32px;
+  font-family: 'Source Code Pro', monospace;
 }
 
-.row2 {
-  display:grid;
-  grid-template-columns: 4fr 3fr;
-  padding:0px;
-}
+// .row2 {
+//   display:grid;
+//   grid-template-columns: 4fr 3fr;
+//   padding:0px;
+// }
 
-
-.btnshow {
-  display: inline-block;
-  font-weight: 700;
-  color:hsl(0, 0%, 0%);
-  font-size: 14px;
-  background-color: #F9F6F1;
-  border-style: none;
-  height: 50px;
-  width: 200px;
-  cursor: pointer;
-}
-.btnshow:hover {
+.show-btn {
+  margin-top:10px;
   background-color: #FFDED6;
+  width: 100%;
+  height:60px;
+  border-radius: 5px;
+  color:black;
+  transition: all .15s ease-out;
 }
+
+.show-btn:hover {
+  background-color: #f5aea3;
+  box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  transition: all .15s ease-out;
+  color:black;
+}
+
+.show-btn:disabled,
+.show-btn[disabled]{
+  border: 1px solid #FFDED6;
+  background-color: #FFDED6;
+  color: #525252;
+}
+
+
+.showhome-btn {
+  background-color: #f9f6f1;
+  margin-top: 10px;
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  color: black;
+  transition: all .15s ease-out;
+  padding: 14px;
+  font-size: 100%;
+}
+
+.showhome-btn:hover {
+  background-color: #f5aea3;
+  box-shadow: .1px .1px 5px rgb(192, 191, 191);
+  transition: all .15s ease-out;
+  color:black;
+}
+
+
+
+
+// .pseudobutton {
+//   background-color: #FFDED6;
+//   height:60px;
+//   border-radius: 5px;
+//   color:black;
+//   padding: 15px;
+//   width: fit-content;
+//   margin-top: 10px;
+// }
+
+// .btnshow {
+//   display: inline-block;
+//   font-weight: 700;
+//   color:hsl(0, 0%, 0%);
+//   font-size: 14px;
+//   background-color: #e77260;
+//   border-style: none;
+//   height: 50px;
+//   width: 200px;
+//   cursor: pointer;
+//   border-radius: 5px;
+  // color: white;
+//   transition: all .15s ease-out;
+// }
+// .btnshow:hover {
+//   background-color: transparent;
+//   color: black
+// }
+
+
 
 // @media screen and (max-width: 628px) { /*transition size*/
 
