@@ -47,7 +47,6 @@
     </div>
   </div>
 
-
  <hr>
 
   <h4 class="mt-5 mb-3">More Products By <%= "#{@meal.user.first_name} #{@meal.user.last_name}" %></h4>
@@ -57,8 +56,8 @@
         <div class="cardpc m-2">
         <%= link_to meal_path(meal), class: "text-decoration-none" do %>
           <%= cl_image_tag meal.photo.key, class: "meal-image-slider" %>
-          <h5 class="card-title info-left"><%= meal.name %></h5>
-          <h5 class="bottom-right info-right">$<%= sprintf('%.2f', meal.price) %></h5>
+          <h5 class="card-title"><%= meal.name %></h5>
+          <h5 class="bottom-right text-dark mb-2">$<%= sprintf('%.2f', meal.price) %></h5>
         <% end %>
         </div>
       <% end %>
