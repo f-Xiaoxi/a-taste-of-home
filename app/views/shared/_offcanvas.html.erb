@@ -25,7 +25,7 @@
             </div>
             <div class='canvas-double-column m-1'>
               <h6 class="pt-2"><%= order.meal.name %></h6>
-              <h6 class="price">$<%= order.meal.price %></h6>
+              <h6 class="price">$<%= sprintf('%.2f', order.meal.price) %></h6>
               <h6 class="price"><%= "Buyer: #{order.buyer.first_name} #{order.buyer.last_name}" %></h6>
             </div>
           </div>
