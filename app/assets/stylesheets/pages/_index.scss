@@ -133,7 +133,7 @@ body {
 
 .dropdown-toggle-custom {
   border: 1px solid black;
-  width: 200px;
+  width: 250px;
   height: 30px;
   background-color: white;
   padding: 3px;
@@ -141,7 +141,7 @@ body {
 
 .dropdown-menu {
   border: 1px solid black;
-  width: 200px;
+  width: 250px;
 }
 
 .search-bar {
@@ -159,4 +159,9 @@ body {
 .search-form-style::placeholder {
   font-size: 1rem;
   letter-spacing: .1em;
+}
+
+.dropdown-item:active {
+  background-color: #FFDED6;
+  color: black;
 }
