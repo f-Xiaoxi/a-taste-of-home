@@ -12,6 +12,8 @@ class Meal < ApplicationRecord
 
   belongs_to :user
   has_many :orders
+  has_many :tags, dependent: :destroy
+  has_many :categories, through: :tags
   has_one_attached :photo
 
   validates :name, presence: true

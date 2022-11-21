@@ -12,6 +12,14 @@
       <div class="meal-info flex-column align-items-center p-3">
         <h2 class="meal-show-title mb-2"><%= @meal.name %></h2>
         <h6 class="fw-light">by <%= "#{@meal.user.first_name} #{@meal.user.last_name}" %></h6>
+        <div class="d-flex mt-3">
+          <% @meal.categories.each do |category| %>
+            <%= form_with url: meals_path, method: :get do %>
+              <%= hidden_field_tag :category, category.name %>
+              <%= button_tag category.abbrev(category.name), class: "circle #{category.abbrev(category.name)} mx-1 fw-bold d-flex justify-content-center align-items-center" %>
+            <% end %>
+          <% end %>
+        </div>
         <br>
         <h5 class="font-weight-bold mt-3 mb-2">Description:</h5>
         <p class="text-left"><%= @meal.description %></p>

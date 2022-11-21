@@ -1,0 +1,61 @@
+.circle {
+  display: inline-block;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: none;
+}
+
+.lg-circle {
+  display: inline-block;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.4rem;
+  border: none;
+}
+
+.GF {
+  background-color: #FFDED6;
+  color: #2A2B2A;
+}
+
+.GF:hover {
+  background-color: #FFB5A3;
+}
+
+.VG {
+  background-color: #F74639;
+  color: white;
+}
+
+.VG:hover {
+  background-color: #F31A0A;
+}
+
+.V {
+  background-color: #D56638;
+  color: white;
+}
+
+.V:hover {
+  background-color: #B45026;
+}
+
+.H {
+  background-color: #003811;
+  color: white;
+}
+
+.H:hover {
+  background-color: #000502;
+}
+
+.NS {
+  background-color: #2A2B2A;
+  color: white
+}
+
+.NS:hover {
+  background-color: #111111;
+}

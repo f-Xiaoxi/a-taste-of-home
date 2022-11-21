@@ -40,10 +40,10 @@
         <%= image_tag("https://res.cloudinary.com/ddaoe4tdm/image/upload/v1668531915/tastehome2_msqitj.png", width: 160) %>
       <% end %>
     </div>
-    <div class="cart">
+    <div class="cart position-relative">
       <%# adding offcanvas here %>
-      <span class="app-icon fa-stack" data-count="<% if current_user %>
-      <%= pending.count%><% else %>0<% end %>">
+      <button class="btn app-icon fa-stack position-absolute" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-count="<% if current_user %>
+      <%= pending.count%><% else %>0<% end %>"></button>
         <button class="btn fa-solid fa-bag-shopping fa-2x" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"></button>
       </span>
     </div>
